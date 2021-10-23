@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     ApplicationProvider,
     IconRegistry
@@ -9,15 +9,37 @@ import {ThemeContext} from './src/context/theme-context';
 
 import {Home} from "./src/components/Home";
 import {LoginNavigator} from "./src/navigation/LoginNavigator";
+import { useColorScheme } from 'react-native';
+import AsyncStorage, {useAsyncStorage} from '@react-native-async-storage/async-storage';
+
 
 function renderPage() {
+    const colorScheme = useColorScheme();
     const [isSignedIn, setSignedIn] = useState(false);
-    const [theme, setTheme] = React.useState('light');
+    const [theme, setTheme] = useState(colorScheme ?? "dark")
+    const{getItem, setItem} = useAsyncStorage('@theme')
+
+    const readItemFromStorage = async () => {
+        const item = await getItem()
+        setTheme(item ?? theme);
+    }
+
+    const writeItemToStorage = async (newValue) => {
+        await setItem(newValue)
+        setTheme(newValue)
+    }
+
+    useEffect(()=>{
+        readItemFromStorage();
+    }, [])
 
     const toggleTheme = () => {
         const nextTheme = theme === 'light' ? 'dark' : 'light';
         setTheme(nextTheme);
+        writeItemToStorage(nextTheme);
     };
+
+    useEffect(()=>{})
 
     return (
         <ThemeContext.Provider value={{theme, toggleTheme}}>

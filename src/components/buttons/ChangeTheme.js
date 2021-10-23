@@ -6,7 +6,7 @@ const ChangeTheme = () => {
     const themeContext = React.useContext(ThemeContext);
 
     return (
-        <Button style={{marginVertical: 4}} onPress={themeContext.toggleTheme}>Сменить тему</Button>
+        <Button appearance='outline' status='basic' style={{marginVertical: 4}} onPress={themeContext.toggleTheme}>Сменить тему</Button>
     );
 }
 

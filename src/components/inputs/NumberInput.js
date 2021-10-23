@@ -46,7 +46,7 @@ const NumberInput = ({navigation}) => {
                         onChangeFormattedText={(text) => {
                             setFormattedValue(text);
                         }}
-                        withDarkTheme={true}
+                        withDarkTheme
                     />
                     <Button
                         style={{marginTop: 10, width: '100%'}}
