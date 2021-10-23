@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Icon } from '@ui-kitten/components';
+import {Button} from '@ui-kitten/components';
 
-export const  NumberLoginButton = ({ navigation }) => {
+export const NumberLoginButton = ({navigation}) => {
     const navigateNumber = () => {
         navigation.navigate('LoginWithNumber');
     };

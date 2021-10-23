@@ -5,7 +5,8 @@ import {FacebookLoginButton} from "../buttons/login/Facebook";
 import {TwitterLoginButton} from "../buttons/login/Twitter";
 import {NumberLoginButton} from "../buttons/login/Number";
 import {Image} from 'react-native';
-import {Divider, Layout, TopNavigation, Text, Button} from "@ui-kitten/components";
+import {Layout, Text, Button} from "@ui-kitten/components";
+import ChangeTheme from "../buttons/ChangeTheme";
 
 const LoginPage = ({ navigation }) => {
     return (
@@ -21,6 +22,7 @@ const LoginPage = ({ navigation }) => {
                         <FacebookLoginButton/>
                         <TwitterLoginButton/>
                         <NumberLoginButton navigation={navigation}/>
+                        <ChangeTheme/>
 
                         <View>
                             <Text>Регистрируясь, вы принимаете</Text>

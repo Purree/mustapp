@@ -5,25 +5,31 @@ import {
 } from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import * as eva from '@eva-design/eva';
-import {NavigationContainer} from '@react-navigation/native';
+import {ThemeContext} from './src/context/theme-context';
 
 import {Home} from "./src/components/Home";
-import {LoginNavigator} from "./src/components/navigation/LoginNavigator";
+import {LoginNavigator} from "./src/navigation/LoginNavigator";
 
 function renderPage() {
     const [isSignedIn, setSignedIn] = useState(false);
+    const [theme, setTheme] = React.useState('light');
+
+    const toggleTheme = () => {
+        const nextTheme = theme === 'light' ? 'dark' : 'light';
+        setTheme(nextTheme);
+    };
 
     return (
-        <ApplicationProvider {...eva} theme={eva.light}>
-            <IconRegistry icons={EvaIconsPack}/>
-            {isSignedIn ? (
-                <Home/>
-            ) : (
-                <>
+        <ThemeContext.Provider value={{theme, toggleTheme}}>
+            <ApplicationProvider {...eva} theme={eva[theme]}>
+                <IconRegistry icons={EvaIconsPack}/>
+                {isSignedIn ? (
+                    <Home/>
+                ) : (
                     <LoginNavigator/>
-                </>
-            )}
-        </ApplicationProvider>
+                )}
+            </ApplicationProvider>
+        </ThemeContext.Provider>
     )
 }
 
