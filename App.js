@@ -5,23 +5,41 @@ import {
 } from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import * as eva from '@eva-design/eva';
+import {NavigationContainer} from '@react-navigation/native';
 
-import LoginForm from "./src/components/LoginForm";
 import {Home} from "./src/components/Home";
+import {LoginNavigator} from "./src/components/navigation/LoginNavigator";
 
 function renderPage() {
     const [isSignedIn, setSignedIn] = useState(false);
 
     return (
         <ApplicationProvider {...eva} theme={eva.light}>
-            <IconRegistry icons={EvaIconsPack} />
-                {isSignedIn ? (
-                    <Home/>
-                ) : (
-                    <LoginForm/>
-                )}
+            <IconRegistry icons={EvaIconsPack}/>
+            {isSignedIn ? (
+                <Home/>
+            ) : (
+                <>
+                    <LoginNavigator/>
+                </>
+            )}
         </ApplicationProvider>
     )
 }
 
 export default renderPage;
+
+// import React from 'react';
+// import * as eva from '@eva-design/eva';
+// import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
+// import { EvaIconsPack } from '@ui-kitten/eva-icons';
+// import { AppNavigator } from './src/components/AppNavigator';
+//
+// export default () => (
+//     <>
+//         <IconRegistry icons={EvaIconsPack}/>
+//         <ApplicationProvider {...eva} theme={eva.light}>
+//             <AppNavigator/>
+//         </ApplicationProvider>
+//     </>
+// );
