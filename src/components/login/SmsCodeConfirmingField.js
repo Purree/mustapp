@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
     },
     cellText: {
-        color: '#000',
+        // color: '#000',
         fontSize: 18,
         textAlign: 'center',
     },

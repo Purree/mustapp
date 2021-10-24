@@ -1,14 +1,19 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useContext} from "react";
 import {
     SafeAreaView,
-    StyleSheet,
     View,
     StatusBar,
-    TouchableOpacity,
 } from "react-native";
 import PhoneInput from "react-native-phone-number-input";
 import {Colors as styles} from "react-native/Libraries/NewAppScreen";
-import {Button, Text} from "@ui-kitten/components";
+import {Button, Icon, Text, useTheme} from "@ui-kitten/components";
+import {numberValidator} from "../../../hook/useStateWithValidation";
+import {ThemeContext} from "../../../context/theme-context";
+
+
+const DropdownIcon = (props) => (
+    <Icon style={{width:'18px', height:'18px'}} fill={props.color} name='arrow-ios-downward-outline' {...props} />
+);
 
 const NumberInput = ({navigation}) => {
     const [value, setValue] = useState("");
@@ -16,6 +21,10 @@ const NumberInput = ({navigation}) => {
     const [valid, setValid] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
     const phoneInput = useRef(null);
+
+    const {theme} = useContext(ThemeContext);
+    const themeStyles = useTheme();
+
 
     const navigateToConfirm = (phoneNumber) => {
         navigation.navigate('NumberConfirmation', {phoneNumber});
@@ -25,7 +34,7 @@ const NumberInput = ({navigation}) => {
         <>
             <StatusBar barStyle="dark-content"/>
             <View style={styles.container}>
-                <SafeAreaView style={{ alignItems: 'center' }}>
+                <SafeAreaView style={{alignItems: 'center'}}>
                     {showMessage && (
                         <View>
                             {
@@ -37,22 +46,31 @@ const NumberInput = ({navigation}) => {
                     )}
                     <PhoneInput
                         ref={phoneInput}
-                        defaultValue={'9999999999'}
                         defaultCode="RU"
                         layout="first"
+                        containerStyle={{backgroundColor: themeStyles['background-basic-color-3'], width: '100%'}}
+                        textContainerStyle={{backgroundColor: themeStyles['background-basic-color-2']}}
+                        textInputStyle={{color: themeStyles['text-basic-color']}}
+                        codeTextStyle={{color: themeStyles['text-basic-color']}}
+                        textInputProps={{autoComplete: 'tel'}}
+                        placeholder='Ваш номер телефона'
                         onChangeText={(text) => {
                             setValue(text);
                         }}
                         onChangeFormattedText={(text) => {
                             setFormattedValue(text);
                         }}
-                        withDarkTheme
+                        withDarkTheme = {theme === 'dark'}
+                        renderDropdownImage = {<DropdownIcon color={themeStyles['text-basic-color']} />}
                     />
+
+
+
                     <Button
                         style={{marginTop: 10, width: '100%'}}
                         onPress={() => {
-                            const checkValid = phoneInput.current?.isValidNumber(value);
-                            if(checkValid){
+                            const checkValid = phoneInput.current?.isValidNumber(value) && numberValidator(value);
+                            if (checkValid) {
                                 navigateToConfirm(formattedValue);
                                 return ''
                             }

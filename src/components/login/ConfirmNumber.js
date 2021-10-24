@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Button, Divider, Icon, Layout, Text, TopNavigation, TopNavigationAction} from '@ui-kitten/components';
 import {SafeAreaView, StyleSheet} from "react-native";
 import {default as theme} from '../../style/custom-theme.json';
-import SMSCodeConformingField from "../inputs/SmsCodeConfirmingField";
+import SMSCodeConformingField from "./SmsCodeConfirmingField";
 
 const BackIcon = (props) => (
     <Icon {...props} name='arrow-back'/>
@@ -17,12 +17,18 @@ const ConfirmNumber = ({route, navigation}) => {
     const [error, setError] = useState('');
 
     useEffect(() => {
+        let iid = false
         if (smsTimerSeconds > 0) {
-            setTimeout(() => {
+            iid = setTimeout(() => {
                 setSmsTimerSeconds(smsTimerSeconds - 1)
             }, 1000)
         } else {
             setSmsSent(false)
+        }
+        return () => {
+            if (iid) {
+                clearTimeout(iid)
+            }
         }
     })
 
@@ -60,14 +66,16 @@ const ConfirmNumber = ({route, navigation}) => {
             <TopNavigation title='Подтвердить номер телефона' alignment='center' accessoryLeft={BackAction}/>
             <Divider/>
             <Layout style={styles.container}>
-                <Text>Введите 6-значный код, отправленный на номер</Text>
+                <Text style={{textAlign: 'center'}}>Введите 6-значный код, отправленный на номер</Text>
                 <Text style={styles.phoneNumber}>{phoneNumber}</Text>
-                <SMSCodeConformingField onSubmit={onSMSCodeSubmit} />
+                <SMSCodeConformingField onSubmit={onSMSCodeSubmit}/>
                 <Text style={styles.codeError}>{error ? error : ''}</Text>
                 {
-                    smsSent?
-                        <Text style={styles.warningText}>Отправить код ещё раз можно будет через {formatTime(smsTimerSeconds)}</Text>:
-                        <Button style={styles.warningText} status='basic' appearance='ghost' onPress={sendSms}>Отправить код повторно</Button>
+                    smsSent ?
+                        <Text style={styles.warningText}>Отправить код ещё раз можно будет
+                            через {formatTime(smsTimerSeconds)}</Text> :
+                        <Button style={styles.warningText} status='basic' appearance='ghost' onPress={sendSms}>Отправить
+                            код повторно</Button>
                 }
             </Layout>
         </SafeAreaView>
@@ -83,6 +91,7 @@ const styles = StyleSheet.create({
             marginTop: 30
         },
         phoneNumber: {
+            textAlign: 'center',
             color: theme["color-primary-600"]
         },
         codeError: {

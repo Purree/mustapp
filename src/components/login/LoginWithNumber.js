@@ -3,7 +3,7 @@ import {
     SafeAreaView, StyleSheet, View, StatusBar, TouchableOpacity
 } from 'react-native';
 import {Divider, Layout, TopNavigation, Icon, TopNavigationAction, Text} from '@ui-kitten/components';
-import NumberInput from "../inputs/NumberInput";
+import NumberInput from "../inputs/login/NumberInput";
 
 const BackIcon = (props) => (
     <Icon {...props} name='arrow-back'/>

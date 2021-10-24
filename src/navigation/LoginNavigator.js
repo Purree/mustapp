@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { LoginWithNumberScreen } from '../components/login/LoginWithNumber';
 import LoginPage from "../components/login/LoginPage";
 import ConfirmNumber from "../components/login/ConfirmNumber";
+import {Home} from "../components/Home";
 
 
 const { Navigator, Screen } = createStackNavigator();
@@ -15,6 +16,7 @@ const MainNavigator = () => (
         <Screen name='Login' component={LoginPage}/>
         <Screen name='LoginWithNumber' component={LoginWithNumberScreen}/>
         <Screen name='NumberConfirmation' component={ConfirmNumber}/>
+        <Screen name='ScreenAfterLogin' component={Home}/>
     </Navigator>
 );
 
