@@ -1,9 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { LoginWithNumberScreen } from '../components/login/LoginWithNumber';
-import LoginPage from "../components/login/LoginPage";
-import ConfirmNumber from "../components/login/ConfirmNumber";
+import {Home} from "../components/Home";
 
 
 const { Navigator, Screen } = createStackNavigator();
@@ -13,13 +11,12 @@ const MainNavigator = () => (
         headerShown: false,
         animationEnabled: false,
     }}>
-        <Screen name='Login' component={LoginPage}/>
-        <Screen name='LoginWithNumber' component={LoginWithNumberScreen}/>
-        <Screen name='NumberConfirmation' component={ConfirmNumber}/>
+        <Screen name='Home' component={Home}/>
+
     </Navigator>
 );
 
-export const LoginNavigator = () => (
+export const HomeNavigator = () => (
     <NavigationContainer>
         <MainNavigator/>
     </NavigationContainer>

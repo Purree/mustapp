@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useAsyncStorage} from '@react-native-async-storage/async-storage';
 
 /**
- * Save and get data from storage (cached sync)
+ * Save and get data from storage (cached, sync)
  * Value can not be null
  *
  * @param key

@@ -3,15 +3,17 @@ import {
     ApplicationProvider, Button,
     IconRegistry, Text
 } from '@ui-kitten/components';
-import {useColorScheme} from 'react-native';
+import {Image, StyleSheet, useColorScheme, View} from 'react-native';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import * as eva from '@eva-design/eva';
 
-import {Home} from "./src/components/Home";
 import {LoginNavigator} from "./src/navigation/LoginNavigator";
 import useAsyncStorageSync from "./src/hook/useAsyncStorageSync";
 import {ThemeContext} from './src/context/theme-context';
 import {AuthContext} from "./src/context/auth-context";
+import {HomeNavigator} from "./src/navigation/HomeNavigator";
+import {default as theme} from "./src/style/custom-theme.json";
+import If from "./src/components/If";
 
 
 function renderPage() {
@@ -32,17 +34,51 @@ function renderPage() {
             <AuthContext.Provider value={{token, setToken, tokenLoading, tokenError}}>
                 <ApplicationProvider {...eva} theme={eva[theme]}>
                     <IconRegistry icons={EvaIconsPack}/>
-                    {themeError ? <Text>{themeError}</Text> : <></>}
-                    {tokenError ? <Text>{tokenError}</Text> : <></>}
-                    {isSignedIn ? (
-                        <Home/>
-                    ) : (
-                        <LoginNavigator/>
-                    )}
+                    <If condition={themeError}>
+                        <Text>{themeError}</Text>
+                    </If>
+                    <If condition={tokenError}>
+                        <Text>{tokenError}</Text>
+                    </If>
+                    <If condition={tokenLoading}>
+                        <View style={styles.logoBlock}>
+                            <Image style={styles.logo} source={require('./src/pictures/logo.png')}/>
+                            <Text style={styles.logoText} category='h1'>Must</Text>
+                            <Text style={styles.logoText} category='s1'>Социальная сеть для киноманов</Text>
+                        </View>
+                    </If>
+                    <If condition={!tokenLoading}>
+                        <If condition={isSignedIn}>
+                            <HomeNavigator/>
+                        </If>
+                        <If condition={!isSignedIn}>
+                            <LoginNavigator/>
+                        </If>
+                    </If>
                 </ApplicationProvider>
             </AuthContext.Provider>
         </ThemeContext.Provider>
     )
 }
+
+const styles = StyleSheet.create({
+    logo: {
+        maxWidth: 85,
+        maxHeight: 85,
+        flex: 1,
+        justifyContent: "center"
+    },
+    logoBlock: {
+        width: '100%',
+        backgroundColor: theme["color-primary-500"],
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+    },
+    logoText: {
+        color: '#ffffff',
+        textAlign: 'center'
+    },
+});
 
 export default renderPage;
