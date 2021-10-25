@@ -3,6 +3,7 @@ import {Button, Divider, Icon, Layout, Text, TopNavigation, TopNavigationAction}
 import {SafeAreaView, StyleSheet} from "react-native";
 import {default as theme} from '../../style/custom-theme.json';
 import SMSCodeConformingField from "./SmsCodeConfirmingField";
+import {AuthContext} from "../../context/auth-context";
 
 const BackIcon = (props) => (
     <Icon {...props} name='arrow-back'/>
@@ -15,6 +16,8 @@ const ConfirmNumber = ({route, navigation}) => {
     const [smsTimerSeconds, setSmsTimerSeconds] = useState(maxSmsTimerSeconds);
     const [smsSent, setSmsSent] = useState(true)
     const [error, setError] = useState('');
+
+    const authContext = React.useContext(AuthContext);
 
     useEffect(() => {
         let iid = false
@@ -43,6 +46,10 @@ const ConfirmNumber = ({route, navigation}) => {
         navigation.goBack();
     };
 
+    const navigateHome = () => {
+        navigation.navigate('ScreenAfterLogin');
+    };
+
     const BackAction = () => (
         <TopNavigationAction icon={BackIcon} onPress={navigateBack}/>
     );
@@ -54,8 +61,10 @@ const ConfirmNumber = ({route, navigation}) => {
     }
 
     const onSMSCodeSubmit = (value) => {
+        // Логика, если верный код
         if (value === '666666') {
-            alert('Код верный')
+            // Устанавливаем токен
+            authContext.setToken('aboba')
         } else {
             setError('Код неверный')
         }
@@ -68,7 +77,7 @@ const ConfirmNumber = ({route, navigation}) => {
             <Layout style={styles.container}>
                 <Text style={{textAlign: 'center'}}>Введите 6-значный код, отправленный на номер</Text>
                 <Text style={styles.phoneNumber}>{phoneNumber}</Text>
-                <SMSCodeConformingField onSubmit={onSMSCodeSubmit}/>
+                <SMSCodeConformingField onSubmit={(code)=>{onSMSCodeSubmit(code)}}/>
                 <Text style={styles.codeError}>{error ? error : ''}</Text>
                 {
                     smsSent ?

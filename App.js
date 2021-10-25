@@ -1,56 +1,46 @@
 import React, {useEffect, useState} from 'react';
 import {
-    ApplicationProvider,
-    IconRegistry
+    ApplicationProvider, Button,
+    IconRegistry, Text
 } from '@ui-kitten/components';
+import {useColorScheme} from 'react-native';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 import * as eva from '@eva-design/eva';
-import {ThemeContext} from './src/context/theme-context';
 
 import {Home} from "./src/components/Home";
 import {LoginNavigator} from "./src/navigation/LoginNavigator";
-import { useColorScheme } from 'react-native';
-import AsyncStorage, {useAsyncStorage} from '@react-native-async-storage/async-storage';
+import useAsyncStorageSync from "./src/hook/useAsyncStorageSync";
+import {ThemeContext} from './src/context/theme-context';
+import {AuthContext} from "./src/context/auth-context";
 
 
 function renderPage() {
     const colorScheme = useColorScheme();
-    const [isSignedIn, setSignedIn] = useState(false);
-    const [theme, setTheme] = useState(colorScheme ?? "dark")
-    const{getItem, setItem} = useAsyncStorage('@theme')
 
-    const readItemFromStorage = async () => {
-        const item = await getItem()
-        setTheme(item ?? theme);
-    }
-
-    const writeItemToStorage = async (newValue) => {
-        await setItem(newValue)
-        setTheme(newValue)
-    }
-
-    useEffect(()=>{
-        readItemFromStorage();
-    }, [])
+    const [theme, setTheme, themeLoading, themeError] = useAsyncStorageSync('theme', colorScheme ?? "dark")
+    const [token, setToken, tokenLoading, tokenError] = useAsyncStorageSync('token', '')
 
     const toggleTheme = () => {
         const nextTheme = theme === 'light' ? 'dark' : 'light';
         setTheme(nextTheme);
-        writeItemToStorage(nextTheme);
     };
 
-    useEffect(()=>{})
+    const isSignedIn = !tokenLoading && token;
 
     return (
         <ThemeContext.Provider value={{theme, toggleTheme}}>
-            <ApplicationProvider {...eva} theme={eva[theme]}>
-                <IconRegistry icons={EvaIconsPack}/>
-                {isSignedIn ? (
-                    <Home/>
-                ) : (
-                    <LoginNavigator/>
-                )}
-            </ApplicationProvider>
+            <AuthContext.Provider value={{token, setToken, tokenLoading, tokenError}}>
+                <ApplicationProvider {...eva} theme={eva[theme]}>
+                    <IconRegistry icons={EvaIconsPack}/>
+                    {themeError ? <Text>{themeError}</Text> : <></>}
+                    {tokenError ? <Text>{tokenError}</Text> : <></>}
+                    {isSignedIn ? (
+                        <Home/>
+                    ) : (
+                        <LoginNavigator/>
+                    )}
+                </ApplicationProvider>
+            </AuthContext.Provider>
         </ThemeContext.Provider>
     )
 }
