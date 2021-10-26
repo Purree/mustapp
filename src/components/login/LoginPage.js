@@ -7,6 +7,7 @@ import {NumberLoginButton} from "../buttons/login/Number";
 import {Image} from 'react-native';
 import {Layout, Text, Button} from "@ui-kitten/components";
 import ChangeTheme from "../buttons/ChangeTheme";
+import config from '../../../config.json';
 
 const LoginPage = ({ navigation }) => {
     return (
@@ -15,8 +16,8 @@ const LoginPage = ({ navigation }) => {
                 <Layout style={{ width: '100%', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     <View style={styles.logoBlock}>
                         <Image style={styles.logo} source={require('../../pictures/logo.png')}/>
-                        <Text style={styles.logoText} category='h1'>Must</Text>
-                        <Text style={styles.logoText} category='s1'>Социальная сеть для киноманов</Text>
+                        <Text style={styles.logoText} category='h1'>{config.title}</Text>
+                        <Text style={styles.logoText} category='s1'>{config.tagline}</Text>
                     </View>
                     <View style={styles.buttonsBlock}>
                         <FacebookLoginButton/>

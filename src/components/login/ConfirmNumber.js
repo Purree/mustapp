@@ -46,10 +46,6 @@ const ConfirmNumber = ({route, navigation}) => {
         navigation.goBack();
     };
 
-    const navigateHome = () => {
-        navigation.navigate('ScreenAfterLogin');
-    };
-
     const BackAction = () => (
         <TopNavigationAction icon={BackIcon} onPress={navigateBack}/>
     );

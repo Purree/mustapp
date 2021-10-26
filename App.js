@@ -14,6 +14,7 @@ import {AuthContext} from "./src/context/auth-context";
 import {HomeNavigator} from "./src/navigation/HomeNavigator";
 import {default as theme} from "./src/style/custom-theme.json";
 import If from "./src/components/If";
+import config from './config.json'
 
 
 function renderPage() {
@@ -43,8 +44,8 @@ function renderPage() {
                     <If condition={tokenLoading}>
                         <View style={styles.logoBlock}>
                             <Image style={styles.logo} source={require('./src/pictures/logo.png')}/>
-                            <Text style={styles.logoText} category='h1'>Must</Text>
-                            <Text style={styles.logoText} category='s1'>Социальная сеть для киноманов</Text>
+                            <Text style={styles.logoText} category='h1'>{ config.title }</Text>
+                            <Text style={styles.logoText} category='s1'>{ config.tagline }</Text>
                         </View>
                     </If>
                     <If condition={!tokenLoading}>
