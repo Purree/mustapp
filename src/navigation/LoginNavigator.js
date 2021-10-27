@@ -11,7 +11,8 @@ const { Navigator, Screen } = createStackNavigator();
 const MainNavigator = () => (
     <Navigator screenOptions={{
         headerShown: false,
-        animationEnabled: false,
+        animationEnabled: true,
+        presentation: 'transparentModal'
     }}>
         <Screen name='Login' component={LoginPage}/>
         <Screen name='LoginWithNumber' component={LoginWithNumberScreen}/>

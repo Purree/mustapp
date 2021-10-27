@@ -11,7 +11,7 @@ import {LoginNavigator} from "./src/navigation/LoginNavigator";
 import useAsyncStorageSync from "./src/hook/useAsyncStorageSync";
 import {ThemeContext} from './src/context/theme-context';
 import {AuthContext} from "./src/context/auth-context";
-import {HomeNavigator} from "./src/navigation/HomeNavigator";
+import {AuthorizedNavigator} from "./src/navigation/AuthorizedNavigator";
 import {default as theme} from "./src/style/custom-theme.json";
 import If from "./src/components/If";
 import config from './config.json'
@@ -50,7 +50,7 @@ function renderPage() {
                     </If>
                     <If condition={!tokenLoading}>
                         <If condition={isSignedIn}>
-                            <HomeNavigator/>
+                            <AuthorizedNavigator/>
                         </If>
                         <If condition={!isSignedIn}>
                             <LoginNavigator/>

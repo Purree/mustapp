@@ -16,3 +16,6 @@
 5. In src/components/login/ConfirmNumber.js you can 
     - change sms **RE**send logic (in sendSms function)
     - add code validation logic (in onSMSCodeSubmit function) 
+6. In src/components/main/profile/Header.js you can
+    - add link copy logic (in copyLink function)
+    - add link share logic (in shareLink function)
