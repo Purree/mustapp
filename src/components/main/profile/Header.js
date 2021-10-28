@@ -4,6 +4,7 @@ import {
 } from '@ui-kitten/components';
 import {StyleSheet, ToastAndroid, Platform, Alert, Share} from 'react-native';
 import Clipboard from '@react-native-community/clipboard';
+import {default as theme} from "../../../style/custom-theme.json";
 
 const BackIcon = (props) => (
     <Icon {...props} name='settings-2-outline'/>
@@ -74,7 +75,7 @@ export const Header = () => {
     );
 
     return (
-        <Layout style={styles.container} level='1'>
+        <Layout style={{backgroundColor: 'red'}} level='1'>
             <TopNavigation
                 accessoryLeft={renderBackAction}
                 accessoryRight={renderRightActions}
@@ -82,9 +83,3 @@ export const Header = () => {
         </Layout>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        minHeight: 128,
-    },
-});
