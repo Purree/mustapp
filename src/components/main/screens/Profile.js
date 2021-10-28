@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
-import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import {Button, Divider, Layout, useTheme, Avatar} from '@ui-kitten/components';
+import {Pressable, SafeAreaView, StyleSheet, View} from 'react-native';
+import {Button, Divider, Layout, useTheme, Avatar, Text} from '@ui-kitten/components';
 import {ThemeContext} from '../../../context/theme-context';
 import {AuthContext} from '../../../context/auth-context';
 import {Header} from "../profile/Header";
 import defaultAvatar from '../../../pictures/users/avatars/unknownUser.png'
-import {ProfileTabBar} from "../../../navigation/authNavigation/profile/ProfileTabBar";
+import {ProfileTabBar} from "../profile/ProfileTabBar";
 
 export const Profile = ({navigation}) => {
 
@@ -15,6 +15,7 @@ export const Profile = ({navigation}) => {
     const themeStyles = useTheme();
 
     const user = {
+        id: 1,
         name: 'puresh',
         photoPath: 'https://i.ytimg.com/vi/v33s0kTTSnM/maxresdefault.jpg',
         place_in_top: 22705,

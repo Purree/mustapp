@@ -2,20 +2,12 @@ import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {TabBar, Tab, Layout, Text} from '@ui-kitten/components';
 import {ScrollView, View} from "react-native";
+import Viewed from "./Viewed";
+import Serials from "./Serials";
+import Information from "./Information";
+import WillLook from "./WillLook";
 
 const {Navigator, Screen} = createMaterialTopTabNavigator();
-
-const UsersScreen = () => (
-    <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text category='h1'>USERS</Text>
-    </Layout>
-);
-
-const OrdersScreen = () => (
-    <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text category='h1'>ORDERS</Text>
-    </Layout>
-);
 
 const TopTabBar = ({navigation, state}) => (
     <View style={{height: 60}}>
@@ -33,16 +25,16 @@ const TopTabBar = ({navigation, state}) => (
     </View>
 );
 
-const TabNavigator = () => (
+const TabNavigator = (userId = 0) => (
     <Navigator screenOptions={{tabBarScrollEnabled: true}}
-               tabBar={props => <TopTabBar {...props} />}>
-        <Screen name='Users' component={UsersScreen}/>
-        <Screen name='Orders' component={OrdersScreen}/>
-        <Screen name='Drd' component={OrdersScreen}/>
-        <Screen name='asd' component={OrdersScreen}/>
+                      tabBar={props => <TopTabBar {...props} />}>
+        <Screen userId={userId} name='Will Look' component={WillLook}/>
+        <Screen userId={userId} name='Viewed' component={Viewed}/>
+        <Screen userId={userId} name='Serials' component={Serials}/>
+        <Screen userId={userId} name='Information' component={Information}/>
     </Navigator>
 );
 
-export const ProfileTabBar = () => (
-    <TabNavigator/>
+export const ProfileTabBar = (userId = 0) => (
+    <TabNavigator userId={userId}/>
 );
