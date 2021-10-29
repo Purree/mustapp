@@ -17,7 +17,9 @@ const films = {
     },
 }
 
+
 const FilmsContainer = (props) => {
+    const { width, height } = Dimensions.get('window');
 
     const filmsIds = props.filmsIds
 
@@ -27,12 +29,11 @@ const FilmsContainer = (props) => {
 
     return (
         <Layout style={{flex: 1}}>
-            {/*https://coderoad.ru/37455701/React-Native-%D0%B2%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-ScrollView-%D0%BD%D0%B5-%D0%BC%D0%BE%D0%B6%D0%B5%D1%82-%D0%BF%D1%80%D0%BE%D0%BA%D1%80%D1%83%D1%87%D0%B8%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F-%D0%BD%D0%B0-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%B5-Android*/}
-            <ScrollView contentContainerStyle={styles.imagesContainer}>
+            <ScrollView contentContainerStyle={styles.imagesContainer} nestedScrollEnabled={true}>
                     {filmsIds.map((id) => {
                         return (
                             <Image
-                                style={styles.image}
+                                style={[styles.image, {width: width * .40, height: height * .40}]}
                                 source={{
                                     uri: validateLink(films[id]?.photoUrl)
                                 }}
@@ -67,11 +68,14 @@ const ViewedList = (props) => {
 
 const styles = StyleSheet.create({
     imagesContainer: {
-        flex: 1,
+        flexGrow : 1,
+        // flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
-        backgroundColor: 'red'
+        // width: '100%',
+        // height: '100%',
+        // backgroundColor: 'red'
     },
     image: {
         width: '48%',
