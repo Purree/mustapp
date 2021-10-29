@@ -1,6 +1,6 @@
 import React from 'react';
-import {Layout, Text} from "@ui-kitten/components";
-import {Image, ScrollView, StyleSheet, View} from 'react-native';
+import {Layout} from "@ui-kitten/components";
+import {Dimensions, Image, ScrollView, StyleSheet} from 'react-native';
 import EmptyList from "./EmptyList";
 import config from '../../../../config.json'
 
@@ -45,7 +45,6 @@ const FilmsContainer = (props) => {
         </Layout>
     )
 }
-
 
 const ViewedList = (props) => {
     const filmsIds = props.filmsIds
