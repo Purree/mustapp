@@ -1,6 +1,6 @@
 import React from 'react';
 import {Layout, Text} from "@ui-kitten/components";
-import EmptyList from "./EmptyList";
+import EmptyList from "../EmptyList";
 
 const Serials = () => {
     return (

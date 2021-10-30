@@ -1,5 +1,5 @@
 import React from 'react';
-import ViewedList from "./ViewedList";
+import ViewedList from "../ViewedList";
 
 const WillLook = () => {
     return (

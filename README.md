@@ -21,8 +21,9 @@
     - add link share logic (in shareLink function)
 7. In src/components/main/profile/EmptyList you can add guide how to import film library from another service
 8. I don't know how did you implement movie storage so:
-    - in src/components/main/profile[WillLook/Serials/Viewed] you have to add logic of empty film library, you can use 
+    - in src/components/main/profile/screens/[WillLook/Serials/Viewed] you have to add logic of empty film library, you can use 
       EmptyList to show message about the need for watch some films    
     - if some films are in library, you need to import ViewedList component with array of all film ids (you can this change logic if you need)
 9. In src/components/main/profile/ViewedList you need to add films photo uploading from server.
 10. In src/components/main/screens/Profile.js you need to add user select from db logic
+11. In src/components/main/profile/components/information[FavoriteActors, FavoriteDirectors, GraphStatistics, StatisticBlocks, Chart] you MUST change hardcode to data from server

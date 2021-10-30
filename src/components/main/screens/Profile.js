@@ -44,15 +44,15 @@ export const Profile = ({navigation}) => {
                             <Text style={styles.userStatsCount}>{user.place_in_top}</Text>
                             <Text style={styles.userStatsLabel}>Место</Text>
                         </Pressable>
-                        <Pressable onPress={()=>alert('Потом')}>
+                        <Pressable onPress={()=>navigation.navigate('Will Look')}>
                             <Text style={styles.userStatsCount}>{user.will_look}</Text>
                             <Text style={styles.userStatsLabel}>Посмотрю</Text>
                         </Pressable>
-                        <Pressable onPress={()=>alert('Потом')}>
+                        <Pressable onPress={()=>navigation.navigate('Viewed')}>
                             <Text style={styles.userStatsCount}>{user.viewed}</Text>
                             <Text style={styles.userStatsLabel}>Посмотрены</Text>
                         </Pressable>
-                        <Pressable onPress={()=>alert('Потом')}>
+                        <Pressable onPress={()=>navigation.navigate('UserSerials')}>
                             <Text style={styles.userStatsCount}>{user.serials}</Text>
                             <Text style={styles.userStatsLabel}>Сериалы</Text>
                         </Pressable>
