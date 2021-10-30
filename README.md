@@ -30,3 +30,6 @@
 12. In src/components/main/screens/Subscribes.js you can
     - add search logic
     - get users from database
+    - change checkmark-circle-2-outline to plus-circle-outline when user don't subscribe on another user
+    - add (un)subscribe logic into UnsubscribeModal
+    - change "Отписаться" to "Подписаться" in UnsubscribeModal when user isn't a subscriber
