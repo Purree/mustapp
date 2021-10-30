@@ -6,7 +6,7 @@ const FavoriteDirectors = () => {
     return (
         <View style={styles().container}>
             <Text style={styles().mainText}>Любимые режиссеры</Text>
-            <ScrollView horizontal={true} keyboardShouldPersistTaps={"always"}>
+            <ScrollView horizontal={true} keyboardShouldPersistTaps={"always"} showsHorizontalScrollIndicator={false}>
                 <TouchableOpacity style={styles().actorsBlock} onPress={() => alert('Потом')}>
                     <Avatar size='giant' source={{uri: 'https://sun1-87.userapi.com/s/v1/if1/G4xihi1FT7BnS-Y0mUNUoLLVXT-48Vvd0EqjZFm_hnj4_KazXUExv8vvpCxm-y-wWkMQJJNR.jpg?size=50x50&quality=96&crop=0,0,400,400&ava=1'}}/>
                     <Text>Менингит Аппендицит</Text>

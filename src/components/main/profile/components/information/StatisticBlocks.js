@@ -2,15 +2,15 @@ import React from 'react';
 import {Text, useTheme} from '@ui-kitten/components'
 import {ScrollView, View, TouchableOpacity} from 'react-native';
 
-const StatisticBlocks = () => {
+const StatisticBlocks = ({navigation}) => {
     return (
         <View style={styles().container}>
-            <ScrollView horizontal={true} keyboardShouldPersistTaps={"always"}>
-                <TouchableOpacity onPress={() => alert('Потом')} style={styles().block}>
+            <ScrollView horizontal={true} keyboardShouldPersistTaps={"always"} showsHorizontalScrollIndicator={false}>
+                <TouchableOpacity onPress={() => navigation.navigate('Subscribes', {title: 'Подписки', type: 1})} style={styles().block}>
                     <Text style={styles().statsCount}>1</Text>
                     <Text style={styles().statsLabel}>Подписки</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => alert('Потом')} style={styles().block}>
+                <TouchableOpacity onPress={() => navigation.navigate('Subscribes', {title: 'Подписчики', type: 2})} style={styles().block}>
                     <Text style={styles().statsCount}>1</Text>
                     <Text style={styles().statsLabel}>Подписчики</Text>
                 </TouchableOpacity>
@@ -32,7 +32,7 @@ const styles = () => {
 
     return {
         container: {
-            height: "23%"
+            height: "13%"
         },
         block: {
             height: "100%",

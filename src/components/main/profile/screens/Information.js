@@ -6,11 +6,11 @@ import FavoriteDirectors from "../components/information/FavoriteDirectors";
 import GraphStatistics from "../components/information/GraphStatistics";
 import {ScrollView} from 'react-native'
 
-const Information = () => {
+const Information = ({navigation}) => {
     return (
         <Layout style={{flex: 1}}>
             <ScrollView>
-                <StatisticBlocks/>
+                <StatisticBlocks navigation={navigation}/>
                 <FavoriteActors/>
                 <FavoriteDirectors/>
                 <GraphStatistics/>
