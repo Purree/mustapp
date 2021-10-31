@@ -17,7 +17,8 @@ const Header = (props) => {
     return (
         <TopNavigation
             accessoryLeft={BackAction}
-            title={title}
+            alignment='center'
+            title={() => <Text style={{ fontWeight: 'bold', fontSize: 16}}>{title}</Text>}
         />
     );
 }

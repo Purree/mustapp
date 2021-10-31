@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {BottomTabsNavigator} from "./authNavigation/BottomTabsNavigator";
 import Subscribes from "../components/main/screens/Subscribes";
 import {useTheme} from "@ui-kitten/components";
+import UsersTop from "../components/main/screens/UsersTop";
 
 const {Navigator, Screen} = createStackNavigator();
 
@@ -25,6 +26,7 @@ export const AuthorizedNavigator = () => {
         }}>
             <Screen name='Home' component={BottomTabsNavigator}/>
             <Screen name='Subscribes' component={Subscribes} />
+            <Screen name='Top' component={UsersTop} />
         </Navigator>
     </NavigationContainer>
 )};

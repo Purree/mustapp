@@ -40,7 +40,7 @@ export const Profile = ({navigation}) => {
                         <Avatar size='giant' source={user.photoPath ? {uri: user.photoPath} : defaultAvatar}/>
                     </View>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 10}}>
-                        <Pressable onPress={()=>alert('Потом')}>
+                        <Pressable onPress={()=>navigation.navigate('Top')}>
                             <Text style={styles.userStatsCount}>{user.place_in_top}</Text>
                             <Text style={styles.userStatsLabel}>Место</Text>
                         </Pressable>

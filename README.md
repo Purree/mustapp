@@ -33,3 +33,8 @@
     - change checkmark-circle-2-outline to plus-circle-outline when user don't subscribe on another user
     - add (un)subscribe logic into UnsubscribeModal
     - change "Отписаться" to "Подписаться" in UnsubscribeModal when user isn't a subscriber
+13. In src/components/main/top/BestUsers.js you can:
+    - add the best users loading from db
+    - add current user loading from db
+14. In src/components/main/top/AnotherUsers.js you can load users from db. <br/>
+**13 and 14 areas are called from src/components/main/screens/UsersTop.js you can pass parameters from there** <br/>
