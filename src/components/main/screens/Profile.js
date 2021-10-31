@@ -26,7 +26,7 @@ export const Profile = ({navigation}) => {
 
     return (
         <SafeAreaView style={{flex: 1}}>
-            <Header/>
+            <Header navigation={navigation}/>
             <Layout style={styles.container}>
                 {/*<Button style={{ marginVertical: 4 }} onPress={themeContext.toggleTheme}>TOGGLE THEME</Button>*/}
                 {/*<Button style={{ marginVertical: 4 }} onPress={() => authContext.setToken('')}>LOGOUT</Button>*/}

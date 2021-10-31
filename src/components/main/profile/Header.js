@@ -22,7 +22,7 @@ const ShareIcon = (props) => (
     <Icon {...props} name='share-outline'/>
 );
 
-export const Header = () => {
+export const Header = ({navigation}) => {
 
     const [menuVisible, setMenuVisible] = React.useState(false);
 
@@ -71,7 +71,7 @@ export const Header = () => {
     );
 
     const renderBackAction = () => (
-        <TopNavigationAction icon={BackIcon}/>
+        <TopNavigationAction onPress={()=>navigation.navigate('Settings')} icon={BackIcon}/>
     );
 
     return (

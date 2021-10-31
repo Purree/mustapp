@@ -1,7 +1,7 @@
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {TabBar, Tab, Layout, Text, Icon} from '@ui-kitten/components';
-import {ScrollView, View, StyleSheet} from "react-native";
+import {ScrollView, View, StyleSheet, Pressable} from "react-native";
 import Viewed from "./screens/Viewed";
 import Serials from "./screens/Serials";
 import Information from "./screens/Information";
@@ -22,13 +22,13 @@ const TopTabBar = ({navigation, state}) => (
                 <Tab style={{paddingLeft: 15}} title='Информация'/>
             </TabBar>
         </ScrollView>
-        <View style={styles.filtersButton}>
+        <Pressable style={styles.filtersButton} onPress={()=>alert(1)}>
             <Icon
                 style={{height: "75%", width: "75%"}}
                 fill='gray'
                 name='menu-2-outline'
             />
-        </View>
+        </Pressable>
     </View>
 );
 
