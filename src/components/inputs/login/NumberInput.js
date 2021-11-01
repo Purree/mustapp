@@ -9,25 +9,30 @@ import {Colors as styles} from "react-native/Libraries/NewAppScreen";
 import {Button, Icon, Text, useTheme} from "@ui-kitten/components";
 import {numberValidator} from "../../../hook/useStateWithValidation";
 import {ThemeContext} from "../../../context/theme-context";
+import {AuthContext} from "../../../context/auth-context";
+import { LogBox  } from 'react-native';
 
 
 const DropdownIcon = (props) => (
     <Icon style={{width:'18px', height:'18px'}} fill={props.color} name='arrow-ios-downward-outline' {...props} />
 );
 
-const NumberInput = ({navigation}) => {
+const NumberInput = ({navigation, onSuccessfulVerification}) => {
     const [value, setValue] = useState("");
     const [formattedValue, setFormattedValue] = useState("");
     const [valid, setValid] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
     const phoneInput = useRef(null);
 
+    LogBox.ignoreLogs([
+        'Non-serializable values were found in the navigation state',
+    ]);
+
     const {theme} = useContext(ThemeContext);
     const themeStyles = useTheme();
 
-
     const navigateToConfirm = (phoneNumber) => {
-        navigation.navigate('NumberConfirmation', {phoneNumber});
+        navigation.navigate('NumberConfirmation', {phoneNumber, onSuccessfulVerification});
     };
 
     return (

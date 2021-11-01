@@ -6,6 +6,8 @@ import Subscribes from "../components/main/screens/Subscribes";
 import {useTheme} from "@ui-kitten/components";
 import UsersTop from "../components/main/screens/UsersTop";
 import Settings from "../components/main/screens/Settings";
+import {LoginWithNumberScreen} from "../components/login/LoginWithNumber";
+import ConfirmNumber from "../components/login/ConfirmNumber";
 
 const {Navigator, Screen} = createStackNavigator();
 
@@ -29,6 +31,10 @@ export const AuthorizedNavigator = () => {
             <Screen name='Subscribes' component={Subscribes} />
             <Screen name='Top' component={UsersTop} />
             <Screen name='Settings' component={Settings}/>
+            <Screen name='PhoneChange' component={LoginWithNumberScreen}/>
+            <Screen name='NumberConfirmation' component={ConfirmNumber}/>
         </Navigator>
     </NavigationContainer>
 )};
+
+// TODO: Перенести PhoneChange и NumberConfirmation в другой файл навигации и импортировать его тут и в LoginNavigator

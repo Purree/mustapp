@@ -38,3 +38,8 @@
     - add current user loading from db
 14. In src/components/main/top/AnotherUsers.js you can load users from db. <br/>
 **13 and 14 areas are called from src/components/main/screens/UsersTop.js you can pass parameters from there** <br/>
+15. In src/components/main/Settings/UserPhoto.js you can load user photo from db.
+16. In src/components/main/Settings/PhotoModal.js you can add delete photo logic/upload photo to server logic
+17. In src/components/main/settings/PhoneModal.js you can:
+    - delete user phone number
+    - add change phone logic

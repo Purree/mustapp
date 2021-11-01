@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 import {Divider, Layout, Text} from "@ui-kitten/components";
 import Header from "../../Header";
 import UserPhoto from "../settings/UserPhoto";
+import MainUserData from "../settings/MainUserData";
 
 const Settings = ({navigation}) => {
     return (
@@ -11,7 +12,7 @@ const Settings = ({navigation}) => {
             <Divider/>
             <Layout style={styles.container}>
                 <UserPhoto />
-                <Text>Hello!</Text>
+                <MainUserData navigation={navigation}/>
             </Layout>
         </>
     );

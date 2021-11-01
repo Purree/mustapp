@@ -1,22 +1,24 @@
-import React from 'react';
-import {Pressable, StyleSheet} from 'react-native';
-import {Avatar, Icon, Text, useTheme} from "@ui-kitten/components";
+import React, {useState} from 'react';
+import {TouchableOpacity, StyleSheet} from 'react-native';
+import {Avatar, Icon, useTheme} from "@ui-kitten/components";
+import PhotoModal from "./PhotoModal";
 
 
-// https://enappd.com/blog/pick-images-from-camera-gallery-in-react-native-app/78/
-// https://www.npmjs.com/package/react-native-image-picker
-// https://github.com/react-native-image-picker/react-native-image-picker
 const UserPhoto = () => {
     const themeStyles = useTheme()
+    const [visible, setVisible] = useState(false);
 
     return (
-        <Pressable style={styles.photoContainer}>
-            <Avatar style={styles.avatar} size='giant'
-                    source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}}/>
-            <Icon style={styles.photoIcon}
-                  fill={themeStyles['text-info-color']}
-                  name={'camera-outline'}/>
-        </Pressable>
+        <>
+            <PhotoModal visible={visible} setVisible={setVisible}/>
+            <TouchableOpacity onPress={() => setVisible(true)} style={styles.photoContainer}>
+                <Avatar style={styles.avatar} size='giant'
+                        source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}}/>
+                <Icon style={styles.photoIcon}
+                      fill={themeStyles['text-info-color']}
+                      name={'camera-outline'}/>
+            </TouchableOpacity>
+        </>
     );
 }
 

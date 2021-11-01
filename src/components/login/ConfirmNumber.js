@@ -10,14 +10,12 @@ const BackIcon = (props) => (
 );
 
 const ConfirmNumber = ({route, navigation}) => {
-    const {phoneNumber} = route.params
+    const {phoneNumber, onSuccessfulVerification} = route.params
 
     const maxSmsTimerSeconds = 20;
     const [smsTimerSeconds, setSmsTimerSeconds] = useState(maxSmsTimerSeconds);
     const [smsSent, setSmsSent] = useState(true)
     const [error, setError] = useState('');
-
-    const authContext = React.useContext(AuthContext);
 
     useEffect(() => {
         let iid = false
@@ -60,9 +58,9 @@ const ConfirmNumber = ({route, navigation}) => {
         // Логика, если верный код
         if (value === '666666') {
             // Устанавливаем токен
-            authContext.setToken('aboba')
+            onSuccessfulVerification('aboba')
         } else {
-            setError('Код неверный')
+            setError('Код неверный, на данный момент верный код - 666666')
         }
     }
 
