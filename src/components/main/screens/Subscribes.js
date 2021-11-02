@@ -58,7 +58,7 @@ const SubscribedUser = () => {
 }
 
 const Subscribes = ({route, navigation}) => {
-    const {title, type} = route.params // type 1 - subscribers, type 2 - subscriptions
+    const {title, type} = route.params // type 1 - subscribers, type 2 - subscriptions, 3 - recommendations
 
     const SearchIcon = (props) => (
         <Icon {...props} name='search-outline'/>

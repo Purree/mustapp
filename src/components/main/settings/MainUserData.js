@@ -32,7 +32,7 @@ const MainUserData = ({navigation}) => {
                         style={styles().sexContainer}
                         selectedIndex={selectedSex}
                         onChange={index => setSelectedSex(index)}>
-                        <Radio style={{}}>Мужской</Radio>
+                        <Radio>Мужской</Radio>
                         <Radio>Женский</Radio>
                     </RadioGroup>
                 </View>

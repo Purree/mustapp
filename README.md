@@ -43,3 +43,5 @@
 17. In src/components/main/settings/PhoneModal.js you can:
     - delete user phone number
     - add change phone logic
+18. In src/components/main/settings/FriendsAndFastEntrance.js you can add a choice of login method
+19. In src/components/main/settings/Confidentiality.js you can add logic to enable / disable hidden profile 
