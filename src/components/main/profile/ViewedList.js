@@ -45,7 +45,7 @@ const FilmsContainer = (props) => {
                                         fill='white'
                                         name='star'
                                     />
-                                    <View style={{flexDirection: 'row'}}>
+                                    <View style={{flexDirection: 'row', flexWrap: 'wrap',}}>
                                         <Text style={styles.markLabel}>
                                             {films[id]?.mark ?? '-'}
                                         </Text>
@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'darkgray',
         borderRadius: 4,
         flexDirection: 'row',
+        flexWrap: 'wrap',
         justifyContent: 'space-between',
         alignItems: 'center'
     },

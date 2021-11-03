@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native';
 import {Avatar, Icon, useTheme} from "@ui-kitten/components";
-import PhotoModal from "./PhotoModal";
+import PhotoModal from "./components/PhotoModal";
 
 
 const UserPhoto = () => {

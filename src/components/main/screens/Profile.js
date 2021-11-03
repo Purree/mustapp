@@ -31,7 +31,7 @@ export const Profile = ({navigation}) => {
                 {/*<Button style={{ marginVertical: 4 }} onPress={themeContext.toggleTheme}>TOGGLE THEME</Button>*/}
                 {/*<Button style={{ marginVertical: 4 }} onPress={() => authContext.setToken('')}>LOGOUT</Button>*/}
                 <View style={{flex: 1, justifyContent: 'space-between'}}>
-                    <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                         <Text style={{
                             fontWeight: 'bold',
                             color: themeStyles['text-basic-color'],
@@ -39,7 +39,7 @@ export const Profile = ({navigation}) => {
                         }}>{user.name}</Text>
                         <Avatar size='giant' source={user.photoPath ? {uri: user.photoPath} : defaultAvatar}/>
                     </View>
-                    <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 10}}>
+                    <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', paddingBottom: 10}}>
                         <Pressable onPress={()=>navigation.navigate('Top')}>
                             <Text style={styles.userStatsCount}>{user.place_in_top}</Text>
                             <Text style={styles.userStatsLabel}>Место</Text>

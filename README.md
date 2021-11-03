@@ -39,9 +39,11 @@
 14. In src/components/main/top/AnotherUsers.js you can load users from db. <br/>
 **13 and 14 areas are called from src/components/main/screens/UsersTop.js you can pass parameters from there** <br/>
 15. In src/components/main/Settings/UserPhoto.js you can load user photo from db.
-16. In src/components/main/Settings/PhotoModal.js you can add delete photo logic/upload photo to server logic
-17. In src/components/main/settings/PhoneModal.js you can:
+16. In src/components/main/Settings/components/PhotoModal.js you can add delete photo logic/upload photo to server logic
+17. In src/components/main/settings/components/Modal.js you can:
     - delete user phone number
     - add change phone logic
 18. In src/components/main/settings/FriendsAndFastEntrance.js you can add a choice of login method
 19. In src/components/main/settings/Confidentiality.js you can add logic to enable / disable hidden profile 
+20. In src/components/main/settings/SettingsBlock.js you can add logic which will be called when country is changing
+21. In src/components/main/settings/components/Notifications.js you can add notifications filters and logic for it

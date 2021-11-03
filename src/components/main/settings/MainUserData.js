@@ -1,7 +1,7 @@
 import React from 'react';
 import {Input, Radio, RadioGroup, Text, useTheme} from '@ui-kitten/components';
 import {Pressable, View} from 'react-native';
-import PhoneModal from "./PhoneModal";
+import PhoneModal from "./components/PhoneModal";
 
 const MainUserData = ({navigation}) => {
     const [visible, setVisible] = React.useState(false);
@@ -67,7 +67,8 @@ const styles = () => {
             borderRadius: 50
         },
         sexContainer: {
-            flexDirection: 'row'
+            flexDirection: 'row',
+            flexWrap: 'wrap',
         }
     }
 }

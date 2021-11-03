@@ -47,6 +47,7 @@ const styles = () => {
         bottomStats: {
             backgroundColor: themeStyles['background-basic-color-2'],
             flexDirection: 'row',
+            flexWrap: 'wrap',
             justifyContent: 'space-around',
             paddingVertical: 10
         },

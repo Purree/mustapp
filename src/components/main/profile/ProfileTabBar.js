@@ -10,7 +10,7 @@ import WillLook from "./screens/WillLook";
 const {Navigator, Screen} = createMaterialTopTabNavigator();
 
 const TopTabBar = ({navigation, state}) => (
-    <View style={{height: 60, flexDirection: 'row'}}>
+    <View style={{height: 60, flexDirection: 'row', flexWrap: 'wrap',}}>
         <ScrollView horizontal={true} contentContainerStyle={{flexGrow: 1, height: '100%', alignItems: 'center'}}
         >
             <TabBar

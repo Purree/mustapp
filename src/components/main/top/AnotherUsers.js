@@ -60,6 +60,7 @@ const styles = () => {
         userContainer: {
             height: 55,
             flexDirection: 'row',
+            flexWrap: 'wrap',
             alignItems: 'center',
             marginVertical: 5
         },
@@ -68,7 +69,8 @@ const styles = () => {
             textAlign: 'center'
         },
         userInfo: {
-            flexDirection: 'row'
+            flexDirection: 'row',
+            flexWrap: 'wrap',
         },
         user: {
             marginLeft: 10

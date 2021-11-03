@@ -6,6 +6,9 @@ import UserPhoto from "../settings/UserPhoto";
 import MainUserData from "../settings/MainUserData";
 import FriendsAndFastEntrance from "../settings/FriendsAndFastEntrance";
 import Confidentiality from "../settings/Confidentiality";
+import SettingsBlock  from "../settings/SettingsBlock"
+import DividerWithMargin from "../settings/components/DividerWithMargin";
+import MainStyles from "../settings/components/MainStyles";
 
 const Settings = ({navigation}) => {
     return (
@@ -13,26 +16,19 @@ const Settings = ({navigation}) => {
             <Header navigation={navigation} title={'Настройки'}/>
             <Divider/>
             <ScrollView>
-                <Layout style={styles.container}>
+                <Layout style={MainStyles().container}>
                     <UserPhoto/>
                     <MainUserData navigation={navigation}/>
-                    <Divider style={{marginVertical: 10}}/>
+                    <DividerWithMargin/>
                     <FriendsAndFastEntrance navigation={navigation}/>
                     <Divider style={{marginBottom: 10}}/>
                     <Confidentiality/>
+                    <DividerWithMargin/>
+                    <SettingsBlock navigation={navigation} />
                 </Layout>
             </ScrollView>
         </>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingLeft: 25,
-        paddingRight: 25,
-        marginTop: 25
-    }
-})
 
 export default Settings;

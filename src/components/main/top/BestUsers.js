@@ -53,6 +53,7 @@ const bestUsersStyles = (place = 1) => {
         userContainer: {
             height: 55,
             flexDirection: 'row',
+            flexWrap: 'wrap',
             alignItems: 'center',
             marginVertical: 5
         },
@@ -62,6 +63,7 @@ const bestUsersStyles = (place = 1) => {
         },
         userInfoBlock: {
             flexDirection: 'row',
+            flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'space-between',
             height: '100%',

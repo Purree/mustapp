@@ -1,6 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Divider, Text, Toggle, useTheme} from "@ui-kitten/components";
+import {Text, Toggle, useTheme} from "@ui-kitten/components";
+import DividerWithMargin from "./components/DividerWithMargin";
+import MainStyles from "./components/MainStyles";
 
 const Confidentiality = () => {
     const themeStyles = useTheme()
@@ -13,20 +15,15 @@ const Confidentiality = () => {
 
     return (
         <View>
-            <Text style={{
-                fontSize: 14,
-                color: themeStyles['text-hint-color'],
-                fontWeight: 'bold'
-            }}>Конфиденциальность</Text>
-            <Divider style={{marginVertical: 10}} />
-            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={MainStyles().BlockName}>Конфиденциальность</Text>
+            <DividerWithMargin/>
+            <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                 <View>
                     <Text style={{fontWeight: 'bold'}}>Скрытый профиль</Text>
                     <Text style={{fontWeight: 'bold', fontSize: 14, color: themeStyles['text-hint-color']}}>Свой профиль видите только вы.</Text>
                 </View>
                 <Toggle checked={checked} onChange={onCheckedChange}/>
             </View>
-            <Divider style={{marginVertical: 10}} />
         </View>
     );
 }

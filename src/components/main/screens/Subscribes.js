@@ -31,10 +31,11 @@ const SubscribedUser = () => {
             <View style={{
                 marginVertical: 10,
                 flexDirection: 'row',
+                flexWrap: 'wrap',
                 alignItems: 'center',
                 justifyContent: 'space-between'
             }}>
-                <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => alert('Это на бэкендере')}>
+                <TouchableOpacity style={{flexWrap: 'wrap', flexDirection: 'row'}} onPress={() => alert('Это на бэкендере')}>
                     <Avatar
                         source={{uri: 'https://sun1-19.userapi.com/s/v1/ig2/YwaJQIjOU99SLyO8VeiK39K-i3bB_tgP5tMTvosXUzMZqdJ3z0whE42U6YfpOG9eXvj4PPCA6-_vPw_mIt3RIvKA.jpg?size=50x50&quality=95&crop=338,150,1122,1122&ava=1'}}/>
                     <View style={{marginLeft: 10}}>

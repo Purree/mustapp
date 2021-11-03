@@ -1,7 +1,9 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Divider, Icon, Text, Toggle, useTheme} from "@ui-kitten/components";
+import {Icon, Text, Toggle, useTheme} from "@ui-kitten/components";
 import {TouchableOpacity} from "react-native-gesture-handler";
+import DividerWithMargin from "./components/DividerWithMargin";
+import MainStyles from "./components/MainStyles";
 
 
 const EntranceMethodContainer = ({label, iconName, iconBackgroundColor}) => {
@@ -29,13 +31,11 @@ const FriendsAndFastEntrance = ({navigation}) => {
 
     return (
         <View>
-            <Text style={{fontSize: 14, color: themeStyles['text-hint-color'], fontWeight: 'bold'}}>Друзья и быстрый
-                вход</Text>
-            <Divider style={{marginVertical: 10}}/>
+            <Text style={MainStyles().BlockName}>Друзья и быстрый вход</Text>
+            <DividerWithMargin/>
             <TouchableOpacity onPress={() => navigation.navigate('Subscribes', {type: 3, title: 'Рекомендации'})}
                               style={authMethodStyles.container}>
-                <View
-                    style={[authMethodStyles.iconContainer, {backgroundColor: themeStyles['background-alternative-color-4']}]}>
+                <View style={[authMethodStyles.iconContainer, {backgroundColor: themeStyles['background-alternative-color-4']}]}>
                     <Icon style={authMethodStyles.icon} fill={themeStyles['text-alternate-color']}
                           name='person-outline'/>
                 </View>
