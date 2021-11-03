@@ -1,11 +1,12 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Avatar, Text, useTheme} from "@ui-kitten/components";
+import {TouchableOpacity} from "react-native-gesture-handler";
 
-const UserContainer = ({place, name, tag, avatarPath}) => {
+const UserContainer = ({navigation, place, name, tag, avatarPath}) => {
 
     return (
-        <View style={styles().userContainer}>
+        <TouchableOpacity onPress={()=>navigation.navigate('Profile', {type: 2, userId: 111})} style={styles().userContainer}>
             <Text style={styles().place}>{place}</Text>
             <View style={styles().userInfo}>
                 <Avatar source={{uri: avatarPath}}/>
@@ -14,30 +15,30 @@ const UserContainer = ({place, name, tag, avatarPath}) => {
                     <Text style={styles().userTag}>{tag}</Text>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 
-const AnotherUsers = () => {
+const AnotherUsers = ({navigation}) => {
     return (
         <View style={styles().container}>
             <Text style={styles().label}>Все пользователи</Text>
 
-            <UserContainer place={4} name={"Mitch"} tag={"@g.mitch"}
+            <UserContainer navigation={navigation} place={4} name={"Mitch"} tag={"@g.mitch"}
                            avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer place={5} name={"Mitch"} tag={"@g.mitch"}
+            <UserContainer navigation={navigation} place={5} name={"Mitch"} tag={"@g.mitch"}
                            avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer place={6} name={"Mitch"} tag={"@g.mitch"}
+            <UserContainer navigation={navigation} place={6} name={"Mitch"} tag={"@g.mitch"}
                            avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer place={7} name={"Mitch"} tag={"@g.mitch"}
+            <UserContainer navigation={navigation} place={7} name={"Mitch"} tag={"@g.mitch"}
                            avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer place={8} name={"Mitch"} tag={"@g.mitch"}
+            <UserContainer navigation={navigation} place={8} name={"Mitch"} tag={"@g.mitch"}
                            avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer place={9} name={"Mitch"} tag={"@g.mitch"}
+            <UserContainer navigation={navigation} place={9} name={"Mitch"} tag={"@g.mitch"}
                            avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer place={10} name={"Mitch"} tag={"@g.mitch"}
+            <UserContainer navigation={navigation} place={10} name={"Mitch"} tag={"@g.mitch"}
                            avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer place={11} name={"Mitch"} tag={"@g.mitch"}
+            <UserContainer navigation={navigation} place={11} name={"Mitch"} tag={"@g.mitch"}
                            avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
         </View>
     );

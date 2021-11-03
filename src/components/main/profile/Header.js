@@ -37,7 +37,7 @@ export const Header = ({navigation, type}) => {
             return <Icon {...props} name='settings-2-outline'/>
         }
 
-        return <Icon {...props} name='arrow-ios-back-outline'/>
+        return <Icon {...props} name='home-outline'/>
     };
 
     const notifyMessage = (message) => {
@@ -80,7 +80,7 @@ export const Header = ({navigation, type}) => {
             if(type === 1)
                 navigation.navigate('Settings')
             else
-                navigation.goBack()
+                navigation.navigate('Profile')
         }} icon={BackIcon}/>
     );
 

@@ -12,8 +12,8 @@ const UsersTop = ({navigation}) => {
             <Header navigation={navigation} title='Топ'>Hello!</Header>
             <Divider/>
             <ScrollView>
-                <BestUsers />
-                <AnotherUsers />
+                <BestUsers navigation={navigation}/>
+                <AnotherUsers navigation={navigation}/>
             </ScrollView>
         </Layout>
     );

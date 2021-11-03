@@ -23,7 +23,7 @@ const UnsubscribeModal = (props) => {
 }
 
 
-const SubscribedUser = () => {
+const SubscribedUser = ({navigation}) => {
     const [visible, setVisible] = useState(false);
     const styleTheme = useTheme();
 
@@ -34,7 +34,8 @@ const SubscribedUser = () => {
                 alignItems: 'center',
                 justifyContent: 'space-between'
             }}>
-                <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => alert('Это на бэкендере')}>
+                <TouchableOpacity style={{flexDirection: 'row'}}
+                                  onPress={() => navigation.navigate('Profile', {type: 2, userId: 333})}>
                     <Avatar
                         source={{uri: 'https://sun1-19.userapi.com/s/v1/ig2/YwaJQIjOU99SLyO8VeiK39K-i3bB_tgP5tMTvosXUzMZqdJ3z0whE42U6YfpOG9eXvj4PPCA6-_vPw_mIt3RIvKA.jpg?size=50x50&quality=95&crop=338,150,1122,1122&ava=1'}}/>
                     <View style={{marginLeft: 10}}>
@@ -76,19 +77,19 @@ const Subscribes = ({route, navigation}) => {
                         onChangeText={query => console.log(query)}
                     />
                     <ScrollView>
-                        <SubscribedUser/>
-                        <SubscribedUser/>
-                        <SubscribedUser/>
-                        <SubscribedUser/>
-                        <SubscribedUser/>
-                        <SubscribedUser/>
-                        <SubscribedUser/>
-                        <SubscribedUser/>
-                        <SubscribedUser/>
-                        <SubscribedUser/>
-                        <SubscribedUser/>
-                        <SubscribedUser/>
-                        <SubscribedUser/>
+                        <SubscribedUser navigation={navigation}/>
+                        <SubscribedUser navigation={navigation}/>
+                        <SubscribedUser navigation={navigation}/>
+                        <SubscribedUser navigation={navigation}/>
+                        <SubscribedUser navigation={navigation}/>
+                        <SubscribedUser navigation={navigation}/>
+                        <SubscribedUser navigation={navigation}/>
+                        <SubscribedUser navigation={navigation}/>
+                        <SubscribedUser navigation={navigation}/>
+                        <SubscribedUser navigation={navigation}/>
+                        <SubscribedUser navigation={navigation}/>
+                        <SubscribedUser navigation={navigation}/>
+                        <SubscribedUser navigation={navigation}/>
                     </ScrollView>
                 </View>
             </Layout>

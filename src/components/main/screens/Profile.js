@@ -9,6 +9,8 @@ export const Profile = ({navigation, route}) => {
     const themeStyles = useTheme();
     const type = route?.params?.type ?? 1; // 1 - current user, 2 - other user
     const userId = route?.params?.userId ?? 0;
+    console.log(type, userId)
+    console.log(navigation.canGoBack())
 
     const user = {
         id: 1,
