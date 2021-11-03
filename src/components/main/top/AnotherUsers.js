@@ -2,8 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {Avatar, Text, useTheme} from "@ui-kitten/components";
 
-const UserContainer = (props) => {
-    const {place, name, tag, avatarPath} = props;
+const UserContainer = ({place, name, tag, avatarPath}) => {
 
     return (
         <View style={styles().userContainer}>
@@ -60,7 +59,6 @@ const styles = () => {
         userContainer: {
             height: 55,
             flexDirection: 'row',
-            flexWrap: 'wrap',
             alignItems: 'center',
             marginVertical: 5
         },
@@ -70,7 +68,6 @@ const styles = () => {
         },
         userInfo: {
             flexDirection: 'row',
-            flexWrap: 'wrap',
         },
         user: {
             marginLeft: 10

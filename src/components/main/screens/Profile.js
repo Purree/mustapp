@@ -5,8 +5,10 @@ import {Header} from "../profile/Header";
 import defaultAvatar from '../../../pictures/users/avatars/unknownUser.png'
 import {ProfileTabBar} from "../profile/ProfileTabBar";
 
-export const Profile = ({navigation}) => {
+export const Profile = ({navigation, route}) => {
     const themeStyles = useTheme();
+    const type = route?.params?.type ?? 1; // 1 - current user, 2 - other user
+    const userId = route?.params?.userId ?? 0;
 
     const user = {
         id: 1,
@@ -20,7 +22,7 @@ export const Profile = ({navigation}) => {
 
     return (
         <SafeAreaView style={{flex: 1}}>
-            <Header navigation={navigation}/>
+            <Header type={type} navigation={navigation}/>
             <Layout style={styles.container}>
                 <View style={{flex: 1, justifyContent: 'space-between'}}>
                     <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
@@ -31,7 +33,7 @@ export const Profile = ({navigation}) => {
                         }}>{user.name}</Text>
                         <Avatar size='giant' source={user.photoPath ? {uri: user.photoPath} : defaultAvatar}/>
                     </View>
-                    <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', paddingBottom: 10}}>
+                    <View style={{flexDirection: 'row',  justifyContent: 'space-between', paddingBottom: 10}}>
                         <Pressable onPress={()=>navigation.navigate('Top')}>
                             <Text style={styles.userStatsCount}>{user.place_in_top}</Text>
                             <Text style={styles.userStatsLabel}>Место</Text>

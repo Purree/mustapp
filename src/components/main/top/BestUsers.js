@@ -1,14 +1,12 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Avatar, Icon, Text, useTheme} from "@ui-kitten/components";
-import {numberValidator} from "../../../hook/useStateWithValidation";
+import {TouchableOpacity} from "react-native-gesture-handler";
 
 
-const BestUserContainer = (props) => {
-    const {place, name, count, avatarPath} = props;
-
+const BestUserContainer = ({place, name, count, avatarPath}) => {
     return (
-        <View style={bestUsersStyles().userContainer}>
+        <TouchableOpacity style={bestUsersStyles().userContainer}>
             <Text style={bestUsersStyles().place}>{place}</Text>
             <View style={bestUsersStyles(place).userInfoBlock}>
                 <View style={bestUsersStyles().textInfo}>
@@ -19,7 +17,7 @@ const BestUserContainer = (props) => {
                     <Avatar source={{uri: avatarPath}}/>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }
 
@@ -53,7 +51,6 @@ const bestUsersStyles = (place = 1) => {
         userContainer: {
             height: 55,
             flexDirection: 'row',
-            flexWrap: 'wrap',
             alignItems: 'center',
             marginVertical: 5
         },
@@ -63,7 +60,6 @@ const bestUsersStyles = (place = 1) => {
         },
         userInfoBlock: {
             flexDirection: 'row',
-            flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'space-between',
             height: '100%',

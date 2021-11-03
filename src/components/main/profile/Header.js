@@ -6,9 +6,6 @@ import {StyleSheet, ToastAndroid, Platform, Alert, Share} from 'react-native';
 import Clipboard from '@react-native-community/clipboard';
 import {default as theme} from "../../../style/custom-theme.json";
 
-const BackIcon = (props) => (
-    <Icon {...props} name='settings-2-outline'/>
-);
 
 const MenuIcon = (props) => (
     <Icon {...props} name='more-vertical'/>
@@ -22,7 +19,7 @@ const ShareIcon = (props) => (
     <Icon {...props} name='share-outline'/>
 );
 
-export const Header = ({navigation}) => {
+export const Header = ({navigation, type}) => {
 
     const [menuVisible, setMenuVisible] = React.useState(false);
 
@@ -34,6 +31,14 @@ export const Header = ({navigation}) => {
         Clipboard.setString('Тут должна быть ссылка ' + (profileId ?? ''))
         notifyMessage('Ссылка успешно скопированна')
     }
+
+    const BackIcon = (props) => {
+        if (type === 1) {
+            return <Icon {...props} name='settings-2-outline'/>
+        }
+
+        return <Icon {...props} name='arrow-ios-back-outline'/>
+    };
 
     const notifyMessage = (message) => {
         if (Platform.OS === 'android') {
@@ -71,7 +76,12 @@ export const Header = ({navigation}) => {
     );
 
     const renderBackAction = () => (
-        <TopNavigationAction onPress={()=>navigation.navigate('Settings')} icon={BackIcon}/>
+        <TopNavigationAction onPress={() => {
+            if(type === 1)
+                navigation.navigate('Settings')
+            else
+                navigation.goBack()
+        }} icon={BackIcon}/>
     );
 
     return (

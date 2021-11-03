@@ -68,7 +68,6 @@ const styles = () => {
         },
         sexContainer: {
             flexDirection: 'row',
-            flexWrap: 'wrap',
         }
     }
 }

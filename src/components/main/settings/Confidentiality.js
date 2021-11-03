@@ -17,7 +17,7 @@ const Confidentiality = () => {
         <View>
             <Text style={MainStyles().BlockName}>Конфиденциальность</Text>
             <DividerWithMargin/>
-            <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <View>
                     <Text style={{fontWeight: 'bold'}}>Скрытый профиль</Text>
                     <Text style={{fontWeight: 'bold', fontSize: 14, color: themeStyles['text-hint-color']}}>Свой профиль видите только вы.</Text>
