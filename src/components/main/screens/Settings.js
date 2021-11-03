@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
 import {Divider, Layout} from "@ui-kitten/components";
 import Header from "../../Header";
 import UserPhoto from "../settings/UserPhoto";
@@ -9,6 +9,7 @@ import Confidentiality from "../settings/Confidentiality";
 import SettingsBlock  from "../settings/SettingsBlock"
 import DividerWithMargin from "../settings/components/DividerWithMargin";
 import MainStyles from "../settings/components/MainStyles";
+import LogoutAndThemeChangeButtons from "../settings/components/LogoutAndThemeChangeButtons";
 
 const Settings = ({navigation}) => {
     return (
@@ -25,6 +26,7 @@ const Settings = ({navigation}) => {
                     <Confidentiality/>
                     <DividerWithMargin/>
                     <SettingsBlock navigation={navigation} />
+                    <LogoutAndThemeChangeButtons />
                 </Layout>
             </ScrollView>
         </>

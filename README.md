@@ -47,3 +47,4 @@
 19. In src/components/main/settings/Confidentiality.js you can add logic to enable / disable hidden profile 
 20. In src/components/main/settings/SettingsBlock.js you can add logic which will be called when country is changing
 21. In src/components/main/settings/components/Notifications.js you can add notifications filters and logic for it
+21. In src/components/main/settings/components/LogoutAndThemeChangeButtons.js you can add logout logic

@@ -40,7 +40,7 @@ const FriendsAndFastEntrance = ({navigation}) => {
                           name='person-outline'/>
                 </View>
                 <View style={authMethodStyles.textBlock}>
-                    <Text style={{fontWeight: 'bold'}}>Рекомендуемые пользователи</Text>
+                    <Text>Рекомендуемые пользователи</Text>
                 </View>
             </TouchableOpacity>
 

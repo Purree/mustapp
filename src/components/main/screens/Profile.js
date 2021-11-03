@@ -1,17 +1,11 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Pressable, SafeAreaView, StyleSheet, View} from 'react-native';
-import {Button, Divider, Layout, useTheme, Avatar, Text} from '@ui-kitten/components';
-import {ThemeContext} from '../../../context/theme-context';
-import {AuthContext} from '../../../context/auth-context';
+import {Divider, Layout, useTheme, Avatar, Text} from '@ui-kitten/components';
 import {Header} from "../profile/Header";
 import defaultAvatar from '../../../pictures/users/avatars/unknownUser.png'
 import {ProfileTabBar} from "../profile/ProfileTabBar";
 
 export const Profile = ({navigation}) => {
-
-    const themeContext = React.useContext(ThemeContext);
-    const authContext = React.useContext(AuthContext);
-
     const themeStyles = useTheme();
 
     const user = {
@@ -28,8 +22,6 @@ export const Profile = ({navigation}) => {
         <SafeAreaView style={{flex: 1}}>
             <Header navigation={navigation}/>
             <Layout style={styles.container}>
-                {/*<Button style={{ marginVertical: 4 }} onPress={themeContext.toggleTheme}>TOGGLE THEME</Button>*/}
-                {/*<Button style={{ marginVertical: 4 }} onPress={() => authContext.setToken('')}>LOGOUT</Button>*/}
                 <View style={{flex: 1, justifyContent: 'space-between'}}>
                     <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                         <Text style={{
