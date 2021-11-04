@@ -53,9 +53,9 @@ export const BottomTabsNavigator = () => (
         headerShown: false,
     }} tabBar={props => <BottomTabBar {...props} />}>
         <Screen name='Profile' component={Profile}/>
-        <Screen name='Notifications' component={Notifications}/>
         <Screen name='Popular' component={Popular}/>
-        <Screen name='Search' component={Search}/>
         <Screen name='Serials' component={Serials}/>
+        <Screen name='Notifications' component={Notifications}/>
+        <Screen name='Search' component={Search}/>
     </Navigator>
 );
