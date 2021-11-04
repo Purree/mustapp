@@ -58,5 +58,5 @@
 24. src/components/main/screens/Profile.js used for logged user and for another users, type of current screen and id of
     user you can see in type and userId that = 0 if user is logged in
 25. In all places that link to the user you need to pass type = 2 and userId = id of user what you needed in
-25. In src/components/films/components/[LargeFilmsPreview/MediumFilmsPreview].js you can load films from db (these
+25. In src/components/films/components/[LargeFilmsPreview/MediumFilmsPreview/Collections].js you can load films from db (these
     components loading from main/screens/Popular.js)

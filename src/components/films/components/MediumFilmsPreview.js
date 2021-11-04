@@ -40,7 +40,7 @@ const StarIcon = ({mark}) => (
     />
 );
 
-const filmContainer = (item, themeStyles) => {
+const FilmContainer = (item, themeStyles) => {
     item = item.item
 
     return (
@@ -64,7 +64,7 @@ const MediumFilmsPreview = ({title}) => {
                 horizontal={true}
                 data={DATA}
                 showsHorizontalScrollIndicator={false}
-                renderItem={(item) => filmContainer(item, themeStyles)}
+                renderItem={(item) => FilmContainer(item, themeStyles)}
                 keyExtractor={item => item.id}
             />
         </View>
