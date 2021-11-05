@@ -59,7 +59,7 @@ const MediumFilmsPreview = ({title}) => {
 
     return (
         <View>
-            <Text style={styles.blockTitle}>{title}</Text>
+            <Text style={[styles.blockTitle, title ? {marginBottom: 10, marginTop: 15} : {}]}>{title}</Text>
             <FlatList
                 horizontal={true}
                 data={DATA}
@@ -83,8 +83,6 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     blockTitle: {
-        marginBottom: 10,
-        marginTop: 15,
         fontWeight: 'bold',
         fontSize: 18
     }

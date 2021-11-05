@@ -58,5 +58,7 @@
 24. src/components/main/screens/Profile.js used for logged user and for another users, type of current screen and id of
     user you can see in type and userId that = 0 if user is logged in
 25. In all places that link to the user you need to pass type = 2 and userId = id of user what you needed in
-25. In src/components/films/components/[LargeFilmsPreview/MediumFilmsPreview/Collections].js you can load films from db (these
-    components loading from main/screens/Popular.js)
+26. In src/components/films/components/[LargeFilmsPreview/MediumFilmsPreview/Collections].js you can load films from db (these
+    components loading from main/screens/Popular.js) or from other component
+27. In all places that use components from 26 area you can pass received from db data
+28. In src/components/main/screens/Search.js you can add search logic

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const If = ({ condition, children}) => {
+const If = ({ condition, style, children}) => {
     if(condition) {
         return <>{children}</>
     } else {
