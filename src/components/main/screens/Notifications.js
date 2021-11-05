@@ -1,5 +1,6 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {View} from 'react-native';
+import {Text} from "@ui-kitten/components";
 
 const Notifications = () => {
     return (
