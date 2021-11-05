@@ -62,3 +62,4 @@
     components loading from main/screens/Popular.js) or from other component
 27. In all places that use components from 26 area you can pass received from db data
 28. In src/components/main/screens/Search.js you can add search logic
+29. In sec/components/main/notification/screens/[Actions/Friends].js you can add loading notifications from db

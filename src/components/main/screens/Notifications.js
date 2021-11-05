@@ -1,12 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Text} from "@ui-kitten/components";
+import { Button, Text } from "@ui-kitten/components";
+import { NotificationsTabBar } from "../notification/NotificationsTabBar";
 
 const Notifications = () => {
     return (
-        <>
-            <Text>Hello!</Text>
-        </>
+        <NotificationsTabBar/>
     );
 }
 

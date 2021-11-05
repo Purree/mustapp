@@ -16,7 +16,7 @@ const Search = () => {
         <Layout style={styles.container}>
             <Input
                 style={styles.marginRight}
-                placeholder='Place your Text'
+                placeholder='Поиск'
                 value={searchQuery}
                 onChangeText={query => setSearchQuery(query)}
                 accessoryLeft={SearchIcon}
