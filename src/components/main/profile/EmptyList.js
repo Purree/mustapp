@@ -4,7 +4,7 @@ import {StyleSheet} from "react-native";
 
 const EmptyList = () => {
     return (
-        <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Layout style={styles.container}>
             <Text style={styles.caption}>Список пуст</Text>
             <Text style={styles.text}>Импортируйте вашу библиотеку из</Text>
             <Text style={styles.text}>IMDb, Letterboxd, Кинопоиска или</Text>
@@ -16,6 +16,12 @@ const EmptyList = () => {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '40%'
+    },
     caption: {
         fontSize: 20,
         fontWeight: 'bold',

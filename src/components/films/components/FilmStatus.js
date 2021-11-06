@@ -15,7 +15,6 @@ const FilmStatus = ({item}) => {
     const filmStatus = item.filmStatus ?? 1
     let filmLabel = ''
 
-
     switch (filmStatus) {
         case 2:
             filmLabel = 'Посмотрю'

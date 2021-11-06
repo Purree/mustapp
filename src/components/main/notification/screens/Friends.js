@@ -31,7 +31,7 @@ const DATA = [
     },
 ]
 
-const Action = ( { themeStyles, navigation, item } ) => {
+const Action = ( { navigation, item } ) => {
     return (
         <>
             <TouchableOpacity onPress={() => navigation.navigate( 'Profile', { type: 2, userId: 444 } )}
@@ -60,48 +60,55 @@ const Friends = ( { navigation } ) => {
     };
 
     const renderAction = ( item ) => {
-        return <Action item={item.item} themeStyles={themeStyles} navigation={navigation}/>
+        return <Action item={item.item} navigation={navigation}/>
     }
 
-    return (
-        <>
-            <Pressable onPress={() => {
-                alert( 'Логика на вас' )
-            }} style={styles.iconContainer}>
-                <Icon
-                    style={styles.icon}
-                    fill='#8F9BB3'
-                    name='close-outline'
-                />
-            </Pressable>
-            <View style={styles.findFriendsBlock}>
-                <Text style={[styles.boldText, { color: themeStyles[ 'text-hint-color' ], fontSize: 20 }]}>Найти
-                    друзей</Text>
-                <Text style={[styles.boldText, { color: themeStyles[ 'text-hint-color' ] }]}>Узнайте, кто из ваших
-                    друзей уже есть в Must.</Text>
-                <Text style={[styles.boldText, { color: themeStyles[ 'text-hint-color' ] }]}>Мы ничего не публекуем без
-                    разрешения.</Text>
+    const ListHeader = () => {
+        return (
+            <>
+                <Pressable onPress={() => {
+                    alert( 'Логика на вас' )
+                }} style={styles.iconContainer}>
+                    <Icon
+                        style={styles.icon}
+                        fill='#8F9BB3'
+                        name='close-outline'
+                    />
+                </Pressable>
+                <View style={styles.findFriendsBlock}>
+                    <Text style={[styles.boldText, { color: themeStyles[ 'text-hint-color' ], fontSize: 20 }]}>Найти
+                        друзей</Text>
+                    <Text style={[styles.boldText, { color: themeStyles[ 'text-hint-color' ] }]}>Узнайте, кто из ваших
+                        друзей уже есть в Must.</Text>
+                    <Text style={[styles.boldText, { color: themeStyles[ 'text-hint-color' ] }]}>Мы ничего не публекуем
+                        без
+                        разрешения.</Text>
 
-                <View style={styles.facebookContainer}>
-                    <Text style={[styles.boldText, {
-                        color: themeStyles[ 'text-hint-color' ],
-                        marginRight: 10
-                    }]}>Facebook</Text>
-                    <Toggle checked={facebookChecked} onChange={onCheckedChange}/>
+                    <View style={styles.facebookContainer}>
+                        <Text style={[styles.boldText, {
+                            color: themeStyles[ 'text-hint-color' ],
+                            marginRight: 10
+                        }]}>Facebook</Text>
+                        <Toggle checked={facebookChecked} onChange={onCheckedChange}/>
+                    </View>
                 </View>
-            </View>
 
 
-            <DividerWithMargin/>
-            <RecommendedUsers themeStyles={themeStyles} navigation={navigation}/>
-            <DividerWithMargin/>
+                <DividerWithMargin/>
+                <RecommendedUsers themeStyles={themeStyles} navigation={navigation}/>
+                <DividerWithMargin/>
+            </>
+        )
+    }
 
-            <FlatList
-                data={DATA}
-                renderItem={renderAction}
-                keyExtractor={item => item.id}
-            />
-        </>
+
+    return (
+        <FlatList
+            ListHeaderComponent={<ListHeader/>}
+            data={DATA}
+            renderItem={renderAction}
+            keyExtractor={item => item.id}
+        />
     );
 }
 
