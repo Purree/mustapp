@@ -1,18 +1,77 @@
 import React from 'react';
-import {Layout} from "@ui-kitten/components";
+import { Layout } from "@ui-kitten/components";
 import StatisticBlocks from "../components/information/StatisticBlocks";
-import FavoriteActors from "../components/information/FavoriteActors";
-import FavoriteDirectors from "../components/information/FavoriteDirectors";
+import FavoritePeoples from "../components/information/FavoritePeoples";
 import GraphStatistics from "../components/information/GraphStatistics";
-import {ScrollView} from 'react-native'
+import { ScrollView } from 'react-native'
 
-const Information = ({navigation}) => {
+const peoples = [
+    {
+        id: 1,
+        name: 'Николай Флитов',
+        count: 1,
+        percents: 100,
+        photoUrl: 'https://sun1-56.userapi.com/s/v1/ig2/NmJozsGBrgIvXu8Splqf__gVkI6JCBQV23TQBeHiV_wJIXENk6XBEuXlGqlQPQG1YyzoH3U_P_3HDUiRhEzgrbov.jpg?size=50x50&quality=95&crop=1283,196,855,855&ava=1'
+    }, {
+        id: 2,
+        name: 'Николай Флитов',
+        count: 1,
+        percents: 100,
+        photoUrl: 'https://sun1-56.userapi.com/s/v1/ig2/NmJozsGBrgIvXu8Splqf__gVkI6JCBQV23TQBeHiV_wJIXENk6XBEuXlGqlQPQG1YyzoH3U_P_3HDUiRhEzgrbov.jpg?size=50x50&quality=95&crop=1283,196,855,855&ava=1'
+    }, {
+        id: 3,
+        name: 'Николай Флитов',
+        count: 1,
+        percents: 100,
+        photoUrl: 'https://sun1-56.userapi.com/s/v1/ig2/NmJozsGBrgIvXu8Splqf__gVkI6JCBQV23TQBeHiV_wJIXENk6XBEuXlGqlQPQG1YyzoH3U_P_3HDUiRhEzgrbov.jpg?size=50x50&quality=95&crop=1283,196,855,855&ava=1'
+    }, {
+        id: 4,
+        name: 'Николай Флитов',
+        count: 1,
+        percents: 100,
+        photoUrl: 'https://sun1-56.userapi.com/s/v1/ig2/NmJozsGBrgIvXu8Splqf__gVkI6JCBQV23TQBeHiV_wJIXENk6XBEuXlGqlQPQG1YyzoH3U_P_3HDUiRhEzgrbov.jpg?size=50x50&quality=95&crop=1283,196,855,855&ava=1'
+    }, {
+        id: 5,
+        name: 'Николай Флитов',
+        count: 1,
+        percents: 100,
+        photoUrl: 'https://sun1-56.userapi.com/s/v1/ig2/NmJozsGBrgIvXu8Splqf__gVkI6JCBQV23TQBeHiV_wJIXENk6XBEuXlGqlQPQG1YyzoH3U_P_3HDUiRhEzgrbov.jpg?size=50x50&quality=95&crop=1283,196,855,855&ava=1'
+    },
+]
+
+const stats = [
+    {
+        title: 'Подписки',
+        count: 1,
+        screenToNavigate: 'Subscribes',
+        navigationParams: {
+            title: 'Подписки',
+            type: 1
+        }
+    }, {
+        title: 'Подписчики',
+        count: 1,
+        screenToNavigate: 'Subscribes',
+        navigationParams: {
+            title: 'Подписчики',
+            type: 2
+        }
+    }, {
+        title: 'Часов просмотра фильмов',
+        count: 1.9
+    }, {
+        title: 'Часов просмотра сериалов',
+        count: 0
+    }
+]
+
+const Information = ( { navigation } ) => {
     return (
-        <Layout style={{flex: 1}}>
+        <Layout style={{ flex: 1 }}>
             <ScrollView>
-                <StatisticBlocks navigation={navigation}/>
-                <FavoriteActors/>
-                <FavoriteDirectors/>
+                <StatisticBlocks statistics={stats} navigation={navigation}/>
+                <FavoritePeoples peoples={peoples} title='Любимые актёры'/>
+                <FavoritePeoples peoples={peoples} title='Любимые режисёры'/>
                 <GraphStatistics/>
             </ScrollView>
         </Layout>

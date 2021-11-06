@@ -1,16 +1,18 @@
 import React from 'react';
-import {Text, useTheme} from '@ui-kitten/components'
-import {ScrollView, View, TouchableOpacity} from 'react-native';
+import { Text, useTheme } from '@ui-kitten/components'
+import { ScrollView, View, TouchableOpacity, FlatList } from 'react-native';
 
-const StatisticBlocks = ({navigation}) => {
+const StatisticBlock1 = ( { navigation } ) => {
     return (
         <View style={styles().container}>
-            <ScrollView horizontal={true} keyboardShouldPersistTaps={"always"} showsHorizontalScrollIndicator={false}>
-                <TouchableOpacity onPress={() => navigation.navigate('Subscribes', {title: 'Подписки', type: 1})} style={styles().block}>
+            <ScrollView>
+                <TouchableOpacity onPress={() => navigation.navigate( 'Subscribes', { title: 'Подписки', type: 1 } )}
+                                  style={styles().block}>
                     <Text style={styles().statsCount}>1</Text>
                     <Text style={styles().statsLabel}>Подписки</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Subscribes', {title: 'Подписчики', type: 2})} style={styles().block}>
+                <TouchableOpacity onPress={() => navigation.navigate( 'Subscribes', { title: 'Подписчики', type: 2 } )}
+                                  style={styles().block}>
                     <Text style={styles().statsCount}>1</Text>
                     <Text style={styles().statsLabel}>Подписчики</Text>
                 </TouchableOpacity>
@@ -27,6 +29,37 @@ const StatisticBlocks = ({navigation}) => {
     );
 }
 
+const StatisticBlock = ( { item, navigation } ) => {
+    return (
+        <TouchableOpacity style={styles().block} disabled={!item.screenToNavigate}
+                          onPress={() => navigation.navigate( item.screenToNavigate, item.navigationParams )}>
+            <Text style={styles().statsCount}>{item.count}</Text>
+            <Text style={styles().statsLabel}>{item.title}</Text>
+        </TouchableOpacity>
+    )
+}
+
+
+const StatisticBlocks = ( { navigation, statistics } ) => {
+
+    const renderItem = ( { item } ) => {
+        return <StatisticBlock item={item} navigation={navigation}/>
+    }
+
+    return (
+        <FlatList
+            horizontal={true}
+            style={styles().container}
+            keyboardShouldPersistTaps={"always"}
+            showsHorizontalScrollIndicator={false}
+            data={statistics}
+            ListEmptyComponent={<Text style={styles().textOnEmpty}>Пока вы смотрели слишком мало фильмов.</Text>}
+            renderItem={renderItem}
+            keyExtractor={item => item.title}
+        />
+    )
+}
+
 const styles = () => {
     const themeStyles = useTheme();
 
@@ -35,9 +68,9 @@ const styles = () => {
             height: "13%"
         },
         block: {
-            height: "100%",
-            backgroundColor: themeStyles['background-basic-color-2'],
-            width: "23%",
+            height: 150,
+            backgroundColor: themeStyles[ 'background-basic-color-2' ],
+            width: 150,
             marginRight: 15,
             justifyContent: 'space-between'
         },
@@ -52,7 +85,10 @@ const styles = () => {
             paddingBottom: 10,
             fontWeight: "bold",
             fontSize: 12,
-            color: themeStyles['text-disabled-color']
+            color: themeStyles[ 'text-disabled-color' ]
+        },
+        textOnEmpty: {
+            fontWeight: 'bold'
         }
     }
 }

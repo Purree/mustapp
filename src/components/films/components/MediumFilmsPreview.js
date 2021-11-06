@@ -32,13 +32,6 @@ const DATA = [
     },
 ];
 
-const StarIcon = ({mark}) => (
-    <Icon
-        style={mark ? styles.icon : {display: 'none'}}
-        fill='white'
-        name='star'
-    />
-);
 
 const FilmContainer = (item, themeStyles) => {
     item = item.item
