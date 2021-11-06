@@ -2,33 +2,6 @@ import React from 'react';
 import { Text, useTheme } from '@ui-kitten/components'
 import { ScrollView, View, TouchableOpacity, FlatList } from 'react-native';
 
-const StatisticBlock1 = ( { navigation } ) => {
-    return (
-        <View style={styles().container}>
-            <ScrollView>
-                <TouchableOpacity onPress={() => navigation.navigate( 'Subscribes', { title: 'Подписки', type: 1 } )}
-                                  style={styles().block}>
-                    <Text style={styles().statsCount}>1</Text>
-                    <Text style={styles().statsLabel}>Подписки</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate( 'Subscribes', { title: 'Подписчики', type: 2 } )}
-                                  style={styles().block}>
-                    <Text style={styles().statsCount}>1</Text>
-                    <Text style={styles().statsLabel}>Подписчики</Text>
-                </TouchableOpacity>
-                <View style={styles().block}>
-                    <Text style={styles().statsCount}>1.9</Text>
-                    <Text style={styles().statsLabel}>Часов просмотра фильмов</Text>
-                </View>
-                <View style={styles().block}>
-                    <Text style={styles().statsCount}>0</Text>
-                    <Text style={styles().statsLabel}>Часов просмотра сериалов</Text>
-                </View>
-            </ScrollView>
-        </View>
-    );
-}
-
 const StatisticBlock = ( { item, navigation } ) => {
     return (
         <TouchableOpacity style={styles().block} disabled={!item.screenToNavigate}
