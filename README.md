@@ -50,16 +50,19 @@
     - delete user phone number
     - add change phone logic
 18. In src/components/main/settings/FriendsAndFastEntrance.js you can add a choice of login method
-19. In src/components/main/settings/Confidentiality.js you can add logic to enable / disable hidden profile
-20. In src/components/main/settings/SettingsBlock.js you can add logic which will be called when country is changing
-21. In src/components/main/settings/components/Notifications.js you can add notifications filters and logic for it
-22. In src/components/main/settings/components/LogoutAndThemeChangeButtons.js you can add logout logic
-23. In src/components/main/settings/profile/ProfileTabBar.js you can add custom filters and add logic to current filters
-24. src/components/main/screens/Profile.js used for logged user and for another users, type of current screen and id of
+19. In src/components/buttons/RecommendedUsers.js you can change recommended users logic
+20. In src/components/main/settings/Confidentiality.js you can add logic to enable / disable hidden profile
+21. In src/components/main/settings/SettingsBlock.js you can add logic which will be called when country is changing
+22. In src/components/main/settings/components/Notifications.js you can add notifications filters and logic for it
+23. In src/components/main/settings/components/LogoutAndThemeChangeButtons.js you can add logout logic
+24. In src/components/main/settings/profile/ProfileTabBar.js you can add custom filters and add logic to current filters
+25. src/components/main/screens/Profile.js used for logged user and for another users, type of current screen and id of
     user you can see in type and userId that = 0 if user is logged in
-25. In all places that link to the user you need to pass type = 2 and userId = id of user what you needed in
-26. In src/components/films/components/[LargeFilmsPreview/MediumFilmsPreview/Collections].js you can load films from db (these
-    components loading from main/screens/Popular.js) or from other component
-27. In all places that use components from 26 area you can pass received from db data
-28. In src/components/main/screens/Search.js you can add search logic
-29. In sec/components/main/notification/screens/[Actions/Friends].js you can add loading notifications from db
+26. In all places that link to the user you need to pass type = 2 and userId = id of user what you needed in
+27. In src/components/films/components/[LargeFilmsPreview/MediumFilmsPreview/Collections].js you can load films from
+    db (these components loading from main/screens/Popular.js) or from other component
+28. In all places that use components from 26 area you can pass received from db data
+29. In src/components/main/screens/Search.js you can add search logic
+30. In sec/components/main/notification/screens/[Actions/Friends].js you can add loading notifications from db
+31. In sec/components/main/notification/screens/Friends.js you must make the facebook and close recommendations buttons
+    work 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import { Avatar, Text, useTheme } from "@ui-kitten/components";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const DATA = [
     {
@@ -67,22 +68,22 @@ const DATA = [
     },
 ];
 
-const Action = ( { item } ) => {
+const Action = ( { navigation, item } ) => {
     return (
-        <View style={styles.actionBlock}>
+        <TouchableOpacity onPress={()=>navigation.navigate('Profile', {type: 2, userId: 444})} style={styles.actionBlock}>
             <Avatar source={{ uri: item.userAvatar }}/>
             <View style={styles.actionTextBlock}>
                 <Text style={styles.actionText}>{item.userName}</Text>
                 <Text style={styles.actionText}>{item.userAction}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 
 
-const Actions = () => {
+const Actions = ( { navigation } ) => {
     const renderAction = ( item ) => {
-        return <Action item={item.item}/>
+        return <Action item={item.item} navigation={navigation}/>
     }
 
     return (

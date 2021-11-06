@@ -4,6 +4,7 @@ import {Icon, Text, Toggle, useTheme} from "@ui-kitten/components";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import DividerWithMargin from "./components/DividerWithMargin";
 import MainStyles from "./components/MainStyles";
+import RecommendedUsers from "../../buttons/RecommendedUsers";
 
 
 const EntranceMethodContainer = ({label, iconName, iconBackgroundColor}) => {
@@ -33,17 +34,7 @@ const FriendsAndFastEntrance = ({navigation}) => {
         <View>
             <Text style={MainStyles().BlockName}>Друзья и быстрый вход</Text>
             <DividerWithMargin/>
-            <TouchableOpacity onPress={() => navigation.navigate('Subscribes', {type: 3, title: 'Рекомендации'})}
-                              style={authMethodStyles.container}>
-                <View style={[authMethodStyles.iconContainer, {backgroundColor: themeStyles['background-alternative-color-4']}]}>
-                    <Icon style={authMethodStyles.icon} fill={themeStyles['text-alternate-color']}
-                          name='person-outline'/>
-                </View>
-                <View style={authMethodStyles.textBlock}>
-                    <Text>Рекомендуемые пользователи</Text>
-                </View>
-            </TouchableOpacity>
-
+            <RecommendedUsers themeStyles={themeStyles} navigation={navigation}/>
             <View style={{marginVertical: 10}}/>
             <EntranceMethodContainer label='Контакты' iconName='phone-outline' iconBackgroundColor={'#54DB65'}/>
             <View style={{marginVertical: 10}}/>
