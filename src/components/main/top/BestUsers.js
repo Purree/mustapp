@@ -24,9 +24,10 @@ const BestUserContainer = ({navigation, place, name, count, avatarPath}) => {
 
 const BestUsers = ({navigation}) => {
     const themeStyle = useTheme();
-
+    // TODO: Переделать логику и заменить на flatlist
     return (
         <View>
+
             <BestUserContainer navigation={navigation} place={1} name='Text' count={46230}
                                avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/200px-Wikipedia-logo-v2.svg.png'}/>
             <BestUserContainer navigation={navigation} place={2} name='Test' count={43474}

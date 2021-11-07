@@ -2,21 +2,21 @@ import React from 'react';
 import { FlatList, ScrollView, TouchableOpacity, View } from 'react-native';
 import { Avatar, Text, useTheme } from '@ui-kitten/components'
 
-const FavoriteActorsBlock = ( { item, themeStyles } ) => (
-    <TouchableOpacity style={styles().actorsBlock} onPress={() => alert( 'Потом' )}>
+const PersonBlock = ( { item, themeStyles } ) => (
+    <TouchableOpacity style={styles().personBlock} onPress={() => alert( 'Потом' )}>
         <Avatar size='giant'
                 source={{ uri: item.photoUrl }}/>
         <Text>{item.name}</Text>
-        <Text style={styles().actorRating}>{item.count} / {item.percents}%</Text>
+        <Text style={styles().personDescription}>{item.description}</Text>
     </TouchableOpacity>
 )
 
-const FavoritePeoples = ( { peoples, title } ) => {
+const Persons = ( { peoples, title } ) => {
     title = title ?? ''
     const themeStyles = useTheme();
 
     const renderComponent = ( { item } ) => {
-        return <FavoriteActorsBlock item={item} themeStyles={themeStyles}/>
+        return <PersonBlock item={item} themeStyles={themeStyles}/>
     }
 
     return <View style={styles().container}>
@@ -27,7 +27,7 @@ const FavoritePeoples = ( { peoples, title } ) => {
             showsHorizontalScrollIndicator={false}
             data={peoples}
             renderItem={renderComponent}
-            ListEmptyComponent={<Text>Пока у вас нет любимых актёров</Text>}
+            ListEmptyComponent={<Text>Пока тут пусто</Text>}
             keyExtractor={item => item.id}
         />
     </View>
@@ -47,14 +47,14 @@ const styles = () => {
             fontSize: 14,
             color: themeStyles[ 'text-hint-color' ]
         },
-        actorsBlock: {
-            width: 90,
+        personBlock: {
+            width: 80,
         },
-        actorRating: {
+        personDescription: {
             color: themeStyles[ 'text-hint-color' ],
             fontSize: 12,
         }
     }
 }
 
-export default FavoritePeoples;
+export default Persons;

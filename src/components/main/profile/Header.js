@@ -89,7 +89,7 @@ export const Header = ({navigation, type}) => {
     );
 
     return (
-        <Layout style={{backgroundColor: 'red'}} level='1'>
+        <Layout style={{}} level='1'>
             <TopNavigation
                 accessoryLeft={renderBackAction}
                 accessoryRight={renderRightActions}

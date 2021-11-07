@@ -4,7 +4,7 @@ import {Button, Divider, Icon, Input, Layout} from "@ui-kitten/components";
 import MediumFilmsPreview from "../../films/components/MediumFilmsPreview";
 import If from "../../If";
 
-const Search = () => {
+const Search = ({navigation}) => {
     const [searchQuery, setSearchQuery] = useState('')
     const [searchType, setSearchType] = useState(1) // 1 - фильм, 2 - сериал
 
@@ -22,7 +22,7 @@ const Search = () => {
                 accessoryLeft={SearchIcon}
             />
             <If condition={!searchQuery}>
-                <MediumFilmsPreview title='Рекомендации'/>
+                <MediumFilmsPreview title='Рекомендации' navigation={navigation}/>
             </If>
             <If condition={searchQuery}>
                 <View style={styles.marginRight}>

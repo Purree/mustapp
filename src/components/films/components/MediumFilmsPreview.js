@@ -32,20 +32,77 @@ const DATA = [
     },
 ];
 
+const filmData = {
+    title: 'Базз Лайтер',
+    photoUrl: 'https://upload.wikimedia.org/wikipedia/ru/6/68/%D0%91%D0%B0%D0%B7%D0%B7_%D0%9B%D0%B0%D0%B9%D1%82%D0%B5%D1%80_%28%D0%A1%D0%B2%D0%B5%D1%82%D0%B8%D0%BA%29.jpg',
+    releaseDate: '16 июня, 2022',
+    description: '"Базз Лайтер" расскажет не о персонаже, известном поклонникам основной серии мультфильмов, а о вымышленном космонавте, на основе которого и начали выпускать те самые игрушки.',
+    type: 1, // 1 - фильм, 2 - сериал
+    watched: 1, // 1 - не посмотрен, 2 - посмотрю, 3 - посмотрю, 4 - смотрю (ТОЛЬКО ДЛЯ СЕРИАЛОВ)
+    statistics: [
+        {
+            count: 22705,
+            title: 'Место',
+            onPress: () => alert( 'Потом' )
+        },
+        {
+            count: 3,
+            title: 'Посмотрю',
+            onPress: () => alert( 'Потом' )
+        },
+        {
+            count: 12,
+            title: 'Посмотрены',
+            onPress: () => alert( 'Потом' )
+        },
+        {
+            count: 0,
+            title: 'Отзывы',
+            onPress: () => alert( 'Потом' )
+        },
+    ],
+    genres: [
+        {
+            id: 1,
+            genre: 'Боевик',
+            icon: '👊'
+        },
+        {
+            id: 2,
+            genre: 'Научная фантастика',
+            icon: '🚀'
+        }
+    ],
+    filmCrew: [
+        {
+            id: 1,
+            name: 'Рубен Флейшер',
+            description: 'Режисёр',
+            photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png'
+        },
+        {
+            id: 2,
+            name: 'Трубен Фельдшер',
+            description: 'Жиресёр',
+            photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png'
+        },
+    ],
+    // similarMovies: []
+}
 
-const FilmContainer = (item, themeStyles) => {
+
+const FilmContainer = (item, themeStyles, navigation) => {
     item = item.item
 
     return (
-        <TouchableOpacity onPress={() => alert("Потом")} style={styles.filmContainer}>
-            {/*item.id*/}
+        <TouchableOpacity onPress={() => navigation.push("Film", {filmData})} style={styles.filmContainer}>
             <Image style={styles.filmImage} source={{uri: item.filmPhoto}}/>
             <FilmStatus item={item} />
         </TouchableOpacity>
     )
 }
 
-const MediumFilmsPreview = ({title}) => {
+const MediumFilmsPreview = ({title, navigation}) => {
     const themeStyles = useTheme()
 
     title = title ?? ''
@@ -57,7 +114,7 @@ const MediumFilmsPreview = ({title}) => {
                 horizontal={true}
                 data={DATA}
                 showsHorizontalScrollIndicator={false}
-                renderItem={(item) => FilmContainer(item, themeStyles)}
+                renderItem={(item) => FilmContainer(item, themeStyles, navigation)}
                 keyExtractor={item => item.id}
             />
         </View>

@@ -31,7 +31,7 @@
 9. In src/components/main/profile/ViewedList you need to add films photo uploading from server.
 10. In src/components/main/screens/Profile.js you need to add user select from db logic
 11. In
-    src/components/main/profile/components/information[FavoritePeoples, GraphStatistics, StatisticBlocks, Chart]
+    src/components/main/profile/components/information[Persons, GraphStatistics, StatisticBlocks, Chart]
     you MUST change hardcode to data from server
 12. In src/components/main/screens/Subscribes.js you can
     - add search logic

@@ -6,7 +6,7 @@ import LargeFilmsPreview from "../../films/components/LargeFilmsPreview";
 import MediumFilmsPreview from "../../films/components/MediumFilmsPreview";
 import Collections from "../../films/components/Collections";
 
-export const Popular = () => {
+export const Popular = ({navigation}) => {
     return (
 
         <Layout>
@@ -17,9 +17,9 @@ export const Popular = () => {
                     <LargeFilmsPreview title='Популярно сейчас'/>
                     {/*Here must be Video block, but if you want to watch youtube videos you need to get apiKeyУ м
                     so apiKey can get only by certificated apps*/}
-                    <MediumFilmsPreview title='Доступен стриминг'/>
-                    <MediumFilmsPreview title='Сейчас в кинотеатрах'/>
-                    <MediumFilmsPreview title='Скоро в кинотеатрах'/>
+                    <MediumFilmsPreview title='Доступен стриминг' navigation={navigation}/>
+                    <MediumFilmsPreview title='Сейчас в кинотеатрах' navigation={navigation}/>
+                    <MediumFilmsPreview title='Скоро в кинотеатрах' navigation={navigation}/>
                     <Collections />
                 </ScrollView>
             </View>

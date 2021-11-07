@@ -9,12 +9,9 @@ import AnotherUsers from "../top/AnotherUsers";
 const UsersTop = ({navigation}) => {
     return (
         <Layout>
-            <Header navigation={navigation} title='Топ'>Hello!</Header>
+            <Header navigation={navigation} title='Топ' />
             <Divider/>
-            <ScrollView>
-                <BestUsers navigation={navigation}/>
-                <AnotherUsers navigation={navigation}/>
-            </ScrollView>
+            <AnotherUsers navigation={navigation}/>
         </Layout>
     );
 }

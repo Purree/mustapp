@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout } from "@ui-kitten/components";
 import StatisticBlocks from "../components/information/StatisticBlocks";
-import FavoritePeoples from "../components/information/FavoritePeoples";
+import Persons from "../components/information/Persons";
 import GraphStatistics from "../components/information/GraphStatistics";
 import { ScrollView } from 'react-native'
 
@@ -9,32 +9,27 @@ const peoples = [
     {
         id: 1,
         name: 'Николай Флитов',
-        count: 1,
-        percents: 100,
+        description: '1/100%',
         photoUrl: 'https://sun1-56.userapi.com/s/v1/ig2/NmJozsGBrgIvXu8Splqf__gVkI6JCBQV23TQBeHiV_wJIXENk6XBEuXlGqlQPQG1YyzoH3U_P_3HDUiRhEzgrbov.jpg?size=50x50&quality=95&crop=1283,196,855,855&ava=1'
     }, {
         id: 2,
         name: 'Николай Флитов',
-        count: 1,
-        percents: 100,
+        description: '1/100%',
         photoUrl: 'https://sun1-56.userapi.com/s/v1/ig2/NmJozsGBrgIvXu8Splqf__gVkI6JCBQV23TQBeHiV_wJIXENk6XBEuXlGqlQPQG1YyzoH3U_P_3HDUiRhEzgrbov.jpg?size=50x50&quality=95&crop=1283,196,855,855&ava=1'
     }, {
         id: 3,
         name: 'Николай Флитов',
-        count: 1,
-        percents: 100,
+        description: '1/100%',
         photoUrl: 'https://sun1-56.userapi.com/s/v1/ig2/NmJozsGBrgIvXu8Splqf__gVkI6JCBQV23TQBeHiV_wJIXENk6XBEuXlGqlQPQG1YyzoH3U_P_3HDUiRhEzgrbov.jpg?size=50x50&quality=95&crop=1283,196,855,855&ava=1'
     }, {
         id: 4,
         name: 'Николай Флитов',
-        count: 1,
-        percents: 100,
+        description: '1/100%',
         photoUrl: 'https://sun1-56.userapi.com/s/v1/ig2/NmJozsGBrgIvXu8Splqf__gVkI6JCBQV23TQBeHiV_wJIXENk6XBEuXlGqlQPQG1YyzoH3U_P_3HDUiRhEzgrbov.jpg?size=50x50&quality=95&crop=1283,196,855,855&ava=1'
     }, {
         id: 5,
         name: 'Николай Флитов',
-        count: 1,
-        percents: 100,
+        description: '1/100%',
         photoUrl: 'https://sun1-56.userapi.com/s/v1/ig2/NmJozsGBrgIvXu8Splqf__gVkI6JCBQV23TQBeHiV_wJIXENk6XBEuXlGqlQPQG1YyzoH3U_P_3HDUiRhEzgrbov.jpg?size=50x50&quality=95&crop=1283,196,855,855&ava=1'
     },
 ]
@@ -70,8 +65,8 @@ const Information = ( { navigation } ) => {
         <Layout style={{ flex: 1 }}>
             <ScrollView>
                 <StatisticBlocks statistics={stats} navigation={navigation}/>
-                <FavoritePeoples peoples={peoples} title='Любимые актёры'/>
-                <FavoritePeoples peoples={peoples} title='Любимые режисёры'/>
+                <Persons peoples={peoples} title='Любимые актёры'/>
+                <Persons peoples={peoples} title='Любимые режисёры'/>
                 <GraphStatistics/>
             </ScrollView>
         </Layout>

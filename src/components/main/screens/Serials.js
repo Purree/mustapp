@@ -6,7 +6,7 @@ import LargeFilmsPreview from "../../films/components/LargeFilmsPreview";
 import MediumFilmsPreview from "../../films/components/MediumFilmsPreview";
 import Collections from "../../films/components/Collections";
 
-const Serials = () => {
+const Serials = ({navigation}) => {
     return (
 
         <Layout>
@@ -14,7 +14,7 @@ const Serials = () => {
             <Divider/>
             <View style={styles.container}>
                 <ScrollView>
-                    <MediumFilmsPreview title='Сериалы'/>
+                    <MediumFilmsPreview navigation={navigation} title='Сериалы'/>
                     <Collections />
                 </ScrollView>
             </View>

@@ -3,7 +3,6 @@ import { FlatList, View, StyleSheet, Pressable } from "react-native";
 import { Text } from "@ui-kitten/components";
 
 const DataBlock = ( { item } ) => {
-    console.log( item )
     return (
         <Pressable onPress={item.onPress}>
             <Text style={styles.userStatsCount}>{item.count}</Text>
@@ -26,7 +25,7 @@ const InformationBlock = ( { actions } ) => {
             showsHorizontalScrollIndicator={false}
             data={actions}
             renderItem={renderComponent}
-            ListEmptyComponent={<Text>Пока у вас нет любимых актёров</Text>}
+            ListEmptyComponent={<Text>Пока тут пусто</Text>}
             keyExtractor={item => item.title}
         />
     );

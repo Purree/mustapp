@@ -44,7 +44,7 @@ const Action = ( { navigation, item } ) => {
             </TouchableOpacity>
             <If condition={item.filmIds}>
                 <View style={styles.actionFilms}>
-                    <MediumFilmsPreview/>
+                    <MediumFilmsPreview navigation={navigation}/>
                 </View>
             </If>
         </>

@@ -1,45 +1,102 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Avatar, Text, useTheme} from "@ui-kitten/components";
-import {TouchableOpacity} from "react-native-gesture-handler";
+import { FlatList, View } from 'react-native';
+import { Avatar, Text, useTheme } from "@ui-kitten/components";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import BestUsers from "./BestUsers";
 
-const UserContainer = ({navigation, place, name, tag, avatarPath}) => {
-
+const UserContainer = ( { navigation, item } ) => {
     return (
-        <TouchableOpacity onPress={()=>navigation.navigate('Profile', {type: 2, userId: 111})} style={styles().userContainer}>
-            <Text style={styles().place}>{place}</Text>
+        <TouchableOpacity onPress={() => navigation.navigate( 'Profile', { type: 2, userId: 111 } )}
+                          style={styles().userContainer}>
+            <Text style={styles().place}>{item.place}</Text>
             <View style={styles().userInfo}>
-                <Avatar source={{uri: avatarPath}}/>
+                <Avatar source={{ uri: item.avatarPath }}/>
                 <View style={styles().user}>
-                    <Text style={styles().userName}>{name}</Text>
-                    <Text style={styles().userTag}>{tag}</Text>
+                    <Text style={styles().userName}>{item.name}</Text>
+                    <Text style={styles().userTag}>{item.tag}</Text>
                 </View>
             </View>
         </TouchableOpacity>
     )
 }
 
-const AnotherUsers = ({navigation}) => {
+const DATA = [
+    {
+        id: 1,
+        name: 'Mitch',
+        tag: '@g.mitch',
+        avatarPath: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg",
+        place: 4
+    },
+    {
+        id: 2,
+        name: 'Mitch',
+        tag: '@g.mitch',
+        avatarPath: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg",
+        place: 5
+    },
+    {
+        id: 3,
+        name: 'Mitch',
+        tag: '@g.mitch',
+        avatarPath: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg",
+        place: 6
+    },
+    {
+        id: 4,
+        name: 'Mitch',
+        tag: '@g.mitch',
+        avatarPath: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg",
+        place: 7
+    },
+    {
+        id: 5,
+        name: 'Mitch',
+        tag: '@g.mitch',
+        avatarPath: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg",
+        place: 8
+    },
+    {
+        id: 6,
+        name: 'Mitch',
+        tag: '@g.mitch',
+        avatarPath: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg",
+        place: 9
+    },
+    {
+        id: 7,
+        name: 'Mitch',
+        tag: '@g.mitch',
+        avatarPath: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg",
+        place: 10
+    },
+    {
+        id: 8,
+        name: 'Mitch',
+        tag: '@g.mitch',
+        avatarPath: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg",
+        place: 11
+    },
+]
+
+
+const AnotherUsers = ( { navigation } ) => {
+
+    const renderItem = ( { item } ) => {
+        return <UserContainer navigation={navigation} item={item}/>
+    }
+
     return (
         <View style={styles().container}>
-            <Text style={styles().label}>Все пользователи</Text>
-
-            <UserContainer navigation={navigation} place={4} name={"Mitch"} tag={"@g.mitch"}
-                           avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer navigation={navigation} place={5} name={"Mitch"} tag={"@g.mitch"}
-                           avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer navigation={navigation} place={6} name={"Mitch"} tag={"@g.mitch"}
-                           avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer navigation={navigation} place={7} name={"Mitch"} tag={"@g.mitch"}
-                           avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer navigation={navigation} place={8} name={"Mitch"} tag={"@g.mitch"}
-                           avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer navigation={navigation} place={9} name={"Mitch"} tag={"@g.mitch"}
-                           avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer navigation={navigation} place={10} name={"Mitch"} tag={"@g.mitch"}
-                           avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
-            <UserContainer navigation={navigation} place={11} name={"Mitch"} tag={"@g.mitch"}
-                           avatarPath={'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Oleksandr_s1mple_Kostyliev.jpg/1200px-Oleksandr_s1mple_Kostyliev.jpg'}/>
+            <FlatList
+                data={DATA}
+                ListHeaderComponent={<>
+                    <BestUsers navigation={navigation}/>
+                    <Text style={styles().label}>Все пользователи</Text>
+                </>}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+            />
         </View>
     );
 }
@@ -53,7 +110,7 @@ const styles = () => {
         },
         label: {
             fontWeight: 'bold',
-            color: themeStyle['text-hint-color'],
+            color: themeStyle[ 'text-hint-color' ],
             textAlign: 'center',
             marginBottom: 20
         },
@@ -77,7 +134,7 @@ const styles = () => {
             fontWeight: 'bold'
         },
         userTag: {
-            color: themeStyle['text-hint-color'],
+            color: themeStyle[ 'text-hint-color' ],
             fontWeight: 'bold'
         }
     }
