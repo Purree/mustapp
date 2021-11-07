@@ -107,6 +107,7 @@ const Subscribes = ( { route, navigation } ) => {
                         data={DATA}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
+                        ListEmptyComponent={<Text>Тут пока пусто</Text>}
                     />
                 </View>
             </Layout>

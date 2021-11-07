@@ -1,7 +1,7 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { TabBar, Tab } from '@ui-kitten/components';
-import { ScrollView, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Friends from "./screens/Friends";
 import Actions from "./screens/Actions";
 
