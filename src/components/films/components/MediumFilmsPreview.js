@@ -38,21 +38,21 @@ const filmData = {
     releaseDate: '16 июня, 2022',
     description: '"Базз Лайтер" расскажет не о персонаже, известном поклонникам основной серии мультфильмов, а о вымышленном космонавте, на основе которого и начали выпускать те самые игрушки.',
     type: 1, // 1 - фильм, 2 - сериал
-    watched: 1, // 1 - не посмотрен, 2 - посмотрю, 3 - посмотрю, 4 - смотрю (ТОЛЬКО ДЛЯ СЕРИАЛОВ)
+    watched: 1, // 1 - не посмотрен, 2 - посмотрю, 3 - посмотрен, 4 - смотрю (ТОЛЬКО ДЛЯ СЕРИАЛОВ)
     statistics: [
         {
-            count: 22705,
-            title: 'Место',
+            count: '70%',
+            title: 'Match',
             onPress: () => alert( 'Потом' )
         },
         {
             count: 3,
-            title: 'Посмотрю',
+            title: 'Посмотрят',
             onPress: () => alert( 'Потом' )
         },
         {
             count: 12,
-            title: 'Посмотрены',
+            title: 'Посмотрели',
             onPress: () => alert( 'Потом' )
         },
         {
@@ -87,6 +87,19 @@ const filmData = {
             photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png'
         },
     ],
+    friendsRatings: [
+        {
+            userId: 1,
+            userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png',
+            userMark: 7
+        },
+        {
+            userId: 2,
+            userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png',
+            userMark: 10
+        }
+    ],
+
     // similarMovies: []
 }
 
@@ -116,6 +129,7 @@ const MediumFilmsPreview = ({title, navigation}) => {
                 showsHorizontalScrollIndicator={false}
                 renderItem={(item) => FilmContainer(item, themeStyles, navigation)}
                 keyExtractor={item => item.id}
+                ListEmptyComponent={<Text>Пока тут пусто</Text>}
             />
         </View>
     );

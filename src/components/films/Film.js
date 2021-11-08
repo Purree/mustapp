@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { View, ScrollView, Image, StyleSheet, LogBox } from 'react-native';
 import { Text, useTheme, Button } from "@ui-kitten/components";
 import Header from "../Header";
@@ -6,6 +6,10 @@ import InformationBlock from "../main/profile/components/InformationBlock";
 import DividerWithMargin from "../main/settings/components/DividerWithMargin";
 import Persons from "../main/profile/components/information/Persons";
 import MediumFilmsPreview from "./components/MediumFilmsPreview";
+import Ratings from "./components/Ratings";
+import Genres from "./components/Genres";
+import WatchedButton from "../buttons/film/WatchedButton";
+import ReviewBottomSheet from "./components/ReviewBottomSheet";
 
 const Film = ( { navigation, route } ) => {
     LogBox.ignoreLogs( [
@@ -13,6 +17,8 @@ const Film = ( { navigation, route } ) => {
     ] );
 
     const themeStyles = useTheme()
+
+    const bottomSheetModalRef = useRef(null);
 
     const DATA = route.params.filmData
 
@@ -27,41 +33,38 @@ const Film = ( { navigation, route } ) => {
                 </View>
                 <Text style={styles.filmTitle}>{DATA.title}</Text>
                 <Text style={[styles.filmText, { color: themeStyles[ 'text-hint-color' ] }]}>{DATA.releaseDate}</Text>
-                <Button>СДЕЛАТЬ ПОЗЖЕ</Button>
+                <WatchedButton type={DATA.type} watched={DATA.watched} bottomSheetModalRef={bottomSheetModalRef}/>
 
                 <View style={styles.informationBlock}>
                     <InformationBlock actions={DATA.statistics}/>
                 </View>
                 <DividerWithMargin/>
 
-                <View>
-                    <Text>ТУТ БУДУТ ОЦЕНКИ ДРУЗЕЙ И ТЕБЯ ЕСЛИ ТЫ СМОТРЕЛ</Text>
-                </View>
+                <Ratings navigation={navigation} ratings={DATA.friendsRatings} />
 
                 <View>
                     <Text style={styles.descriptionHeader}>Описание</Text>
                     <Text
                         style={[styles.descriptionText, { color: themeStyles[ 'text-hint-color' ] }]}>
-                        {DATA.description ? DATA.description : 'Автор пока не угазал описание'}
+                        {DATA.description ? DATA.description : 'Автор пока не указал описание'}
                     </Text>
                 </View>
 
-                <View>
-                    <Text>ТУТ БУДУТ ЖАНРЫ</Text>
-                </View>
+                <Genres navigation={navigation} genres={DATA.genres} style={styles.descriptionHeader} />
 
-                <Persons title='Актёры и съёмочная группа' peoples={DATA.filmCrew} />
+                <Persons title='Актёры и съёмочная группа' style={styles.descriptionHeader} peoples={DATA.filmCrew} />
 
                 <MediumFilmsPreview title='Похожие фильмы' navigation={navigation} />
-
             </ScrollView>
+            <ReviewBottomSheet bottomSheetModalRef={bottomSheetModalRef} filmInfo={{photo: DATA.photoUrl, title: DATA.title, date: DATA.releaseDate}}/>
         </>
     );
 }
 
 const styles = StyleSheet.create( {
     container: {
-        margin: 25
+        margin: 25,
+        paddingBottom: 30
     },
     imageBlock: {
         width: '100%',
@@ -92,7 +95,8 @@ const styles = StyleSheet.create( {
         marginBottom: 10
     },
     descriptionText: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginBottom: 15
     }
 } )
 

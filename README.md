@@ -30,8 +30,7 @@
       change logic if you need)
 9. In src/components/main/profile/ViewedList you need to add films photo uploading from server.
 10. In src/components/main/screens/Profile.js you need to add user select from db logic
-11. In
-    src/components/main/profile/components/information[Persons, GraphStatistics, StatisticBlocks, Chart]
+11. In src/components/main/profile/components/information[Persons, GraphStatistics, StatisticBlocks, Chart]
     you MUST change hardcode to data from server
 12. In src/components/main/screens/Subscribes.js you can
     - add search logic
@@ -63,4 +62,7 @@
 29. In src/components/main/screens/Search.js you can add search logic
 30. In sec/components/main/notification/screens/[Actions/Friends].js you can add loading notifications from db
 31. In sec/components/main/notification/screens/Friends.js you must make the facebook and close recommendations buttons
-    work 
+    work
+32. In sec/components/buttons/film/WatchedButton.js you can send requests to the server when cachedType or cachedWatched
+    variables are change
+33. In src/components/films/components/ReviewBottomSheet.js you can add movie scoring logic

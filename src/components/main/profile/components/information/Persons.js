@@ -11,7 +11,7 @@ const PersonBlock = ( { item, themeStyles } ) => (
     </TouchableOpacity>
 )
 
-const Persons = ( { peoples, title } ) => {
+const Persons = ( { peoples, title, style } ) => {
     title = title ?? ''
     const themeStyles = useTheme();
 
@@ -20,7 +20,7 @@ const Persons = ( { peoples, title } ) => {
     }
 
     return <View style={styles().container}>
-        <Text style={styles().mainText}>{title}</Text>
+        <Text style={style ?? styles().mainText}>{title}</Text>
         <FlatList
             horizontal={true}
             keyboardShouldPersistTaps={"always"}

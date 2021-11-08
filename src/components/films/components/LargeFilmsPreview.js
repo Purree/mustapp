@@ -51,6 +51,7 @@ const LargeFilmsPreview = ({title}) => {
                 showsHorizontalScrollIndicator={false}
                 renderItem={(item) => filmContainer(item, themeStyles)}
                 keyExtractor={item => item.id}
+                ListEmptyComponent={<Text>Пока тут пусто</Text>}
             />
         </View>
     );
