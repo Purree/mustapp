@@ -4,12 +4,10 @@ import { Button, Text } from "@ui-kitten/components";
 import If from "../../If";
 import ReviewBottomSheet from "../../films/components/ReviewBottomSheet";
 
-const WatchedButton = ( { type, watched, bottomSheetModalRef } ) => {
-    const [cachedType, setCachedType] = useState( type )
-    const [cachedWatched, setCachedWatched] = useState( type )
+const WatchedButton = ( { type, setType, watched, setWatched, bottomSheetModalRef } ) => {
 
     const onWillWatch = () => {
-        setCachedWatched( 2 )
+        setWatched( 2 )
     }
 
     const handlePresentModalPress = useCallback(() => {
@@ -18,7 +16,7 @@ const WatchedButton = ( { type, watched, bottomSheetModalRef } ) => {
 
     return (
         <View style={styles.buttonsBlock}>
-            <If condition={cachedWatched === 1}>
+            <If condition={watched === 1}>
                 <View style={styles.manyButtons}>
 
                     <Button style={[styles.button, styles.buttons]} appearance='outline'
@@ -27,15 +25,15 @@ const WatchedButton = ( { type, watched, bottomSheetModalRef } ) => {
                     </Button>
                     <Button style={[styles.button, styles.buttons]} appearance='outline'
                             onPress={handlePresentModalPress}>
-                        Посмотрел
+                        Посмотрен
                     </Button>
                 </View>
             </If>
-            <If condition={cachedWatched === 2}>
+            <If condition={watched === 2}>
                 <Button style={styles.button}>Посмотрю</Button>
             </If>
-            <If condition={cachedWatched === 3}>
-                <Button style={styles.button}>Посмотрел</Button>
+            <If condition={watched === 3}>
+                <Button style={styles.button}>Посмотрен</Button>
             </If>
         </View>
     );

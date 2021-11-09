@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { View, ScrollView, Image, StyleSheet, LogBox } from 'react-native';
 import { Text, useTheme, Button } from "@ui-kitten/components";
 import Header from "../Header";
@@ -18,9 +18,12 @@ const Film = ( { navigation, route } ) => {
 
     const themeStyles = useTheme()
 
-    const bottomSheetModalRef = useRef(null);
+    const bottomSheetModalRef = useRef( null );
 
     const DATA = route.params.filmData
+
+    const type = DATA.type
+    const [cachedWatched, setCachedWatched] = useState( DATA.watched )
 
     return (
         <>
@@ -33,14 +36,15 @@ const Film = ( { navigation, route } ) => {
                 </View>
                 <Text style={styles.filmTitle}>{DATA.title}</Text>
                 <Text style={[styles.filmText, { color: themeStyles[ 'text-hint-color' ] }]}>{DATA.releaseDate}</Text>
-                <WatchedButton type={DATA.type} watched={DATA.watched} bottomSheetModalRef={bottomSheetModalRef}/>
+                <WatchedButton type={type} watched={cachedWatched}
+                               setWatched={setCachedWatched} bottomSheetModalRef={bottomSheetModalRef}/>
 
                 <View style={styles.informationBlock}>
                     <InformationBlock actions={DATA.statistics}/>
                 </View>
                 <DividerWithMargin/>
 
-                <Ratings navigation={navigation} ratings={DATA.friendsRatings} />
+                <Ratings navigation={navigation} ratings={DATA.friendsRatings}/>
 
                 <View>
                     <Text style={styles.descriptionHeader}>Описание</Text>
@@ -50,13 +54,15 @@ const Film = ( { navigation, route } ) => {
                     </Text>
                 </View>
 
-                <Genres navigation={navigation} genres={DATA.genres} style={styles.descriptionHeader} />
+                <Genres navigation={navigation} genres={DATA.genres} style={styles.descriptionHeader}/>
 
-                <Persons title='Актёры и съёмочная группа' style={styles.descriptionHeader} peoples={DATA.filmCrew} />
+                <Persons title='Актёры и съёмочная группа' style={styles.descriptionHeader} peoples={DATA.filmCrew}/>
 
-                <MediumFilmsPreview title='Похожие фильмы' navigation={navigation} />
+                <MediumFilmsPreview title='Похожие фильмы' navigation={navigation}/>
             </ScrollView>
-            <ReviewBottomSheet bottomSheetModalRef={bottomSheetModalRef} filmInfo={{photo: DATA.photoUrl, title: DATA.title, date: DATA.releaseDate}}/>
+            <ReviewBottomSheet bottomSheetModalRef={bottomSheetModalRef}
+                               filmInfo={{ photo: DATA.photoUrl, title: DATA.title, date: DATA.releaseDate }}
+                               setWatched={setCachedWatched}/>
         </>
     );
 }
