@@ -6,6 +6,7 @@ import DividerWithMargin from "../../settings/components/DividerWithMargin";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import If from "../../../If";
 import MediumFilmsPreview from "../../../films/components/MediumFilmsPreview";
+import config from '../../../../../config.json'
 
 const DATA = [
     {
@@ -79,7 +80,7 @@ const Friends = ( { navigation } ) => {
                     <Text style={[styles.boldText, { color: themeStyles[ 'text-hint-color' ], fontSize: 20 }]}>Найти
                         друзей</Text>
                     <Text style={[styles.boldText, { color: themeStyles[ 'text-hint-color' ] }]}>Узнайте, кто из ваших
-                        друзей уже есть в Must.</Text>
+                        друзей уже есть в {config.title}.</Text>
                     <Text style={[styles.boldText, { color: themeStyles[ 'text-hint-color' ] }]}>Мы ничего не публекуем
                         без
                         разрешения.</Text>

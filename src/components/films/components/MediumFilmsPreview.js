@@ -32,80 +32,84 @@ const DATA = [
     },
 ];
 
-const filmData = {
-    title: 'Базз Лайтер',
-    photoUrl: 'https://upload.wikimedia.org/wikipedia/ru/6/68/%D0%91%D0%B0%D0%B7%D0%B7_%D0%9B%D0%B0%D0%B9%D1%82%D0%B5%D1%80_%28%D0%A1%D0%B2%D0%B5%D1%82%D0%B8%D0%BA%29.jpg',
-    releaseDate: '16 июня, 2022',
-    description: '"Базз Лайтер" расскажет не о персонаже, известном поклонникам основной серии мультфильмов, а о вымышленном космонавте, на основе которого и начали выпускать те самые игрушки.',
-    type: 1, // 1 - фильм, 2 - сериал
-    watched: 1, // 1 - не посмотрен, 2 - посмотрю, 3 - посмотрен, 4 - смотрю (ТОЛЬКО ДЛЯ СЕРИАЛОВ)
-    statistics: [
-        {
-            count: '70%',
-            title: 'Match',
-            onPress: () => alert( 'Потом' )
-        },
-        {
-            count: 3,
-            title: 'Посмотрят',
-            onPress: () => alert( 'Потом' )
-        },
-        {
-            count: 12,
-            title: 'Посмотрели',
-            onPress: () => alert( 'Потом' )
-        },
-        {
-            count: 0,
-            title: 'Отзывы',
-            onPress: () => alert( 'Потом' )
-        },
-    ],
-    genres: [
-        {
-            id: 1,
-            genre: 'Боевик',
-            icon: '👊'
-        },
-        {
-            id: 2,
-            genre: 'Научная фантастика',
-            icon: '🚀'
-        }
-    ],
-    filmCrew: [
-        {
-            id: 1,
-            name: 'Рубен Флейшер',
-            description: 'Режисёр',
-            photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png'
-        },
-        {
-            id: 2,
-            name: 'Трубен Фельдшер',
-            description: 'Жиресёр',
-            photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png'
-        },
-    ],
-    friendsRatings: [
-        {
-            userId: 1,
-            userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png',
-            userMark: 7
-        },
-        {
-            userId: 2,
-            userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png',
-            userMark: 10
-        }
-    ],
-
-    // similarMovies: []
-}
-
 
 const FilmContainer = (item, themeStyles, navigation) => {
     item = item.item
+
+    const filmData = {
+        title: 'Базз Лайтер',
+        photoUrl: 'https://upload.wikimedia.org/wikipedia/ru/6/68/%D0%91%D0%B0%D0%B7%D0%B7_%D0%9B%D0%B0%D0%B9%D1%82%D0%B5%D1%80_%28%D0%A1%D0%B2%D0%B5%D1%82%D0%B8%D0%BA%29.jpg',
+        releaseDate: '16 июня, 2022',
+        description: '"Базз Лайтер" расскажет не о персонаже, известном поклонникам основной серии мультфильмов, а о вымышленном космонавте, на основе которого и начали выпускать те самые игрушки.',
+        type: 1, // 1 - фильм, 2 - сериал
+        watched: 1, // 1 - не посмотрен, 2 - посмотрю, 3 - посмотрен, 4 - смотрю (ТОЛЬКО ДЛЯ СЕРИАЛОВ)
+        statistics: [
+            {
+                count: '70%',
+                title: 'Match',
+                isMatch: true,
+                match: {
+                    percent: 0.77,
+                    userRating: 6.7
+                }
+            },
+            {
+                count: 3,
+                title: 'Посмотрят',
+                onPress: () => navigation.navigate('Subscribes', {title: 'Посмотрят', type: 4})
+            },
+            {
+                count: 12,
+                title: 'Посмотрели',
+                onPress: () => navigation.navigate('FilmReviews', {title: 'Посмотрели'})
+            },
+            {
+                count: 0,
+                title: 'Отзывы',
+                onPress: () => navigation.navigate('FilmReviews', {title: 'Отзывы'})
+            },
+        ],
+        genres: [
+            {
+                id: 1,
+                genre: 'Боевик',
+                icon: '👊'
+            },
+            {
+                id: 2,
+                genre: 'Научная фантастика',
+                icon: '🚀'
+            }
+        ],
+        filmCrew: [
+            {
+                id: 1,
+                name: 'Рубен Флейшер',
+                description: 'Режисёр',
+                photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png'
+            },
+            {
+                id: 2,
+                name: 'Трубен Фельдшер',
+                description: 'Жиресёр',
+                photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png'
+            },
+        ],
+        friendsRatings: [
+            {
+                userId: 1,
+                userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png',
+                userMark: 7
+            },
+            {
+                userId: 2,
+                userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png',
+                userMark: 10
+            }
+        ],
+
+        // similarMovies: []
+    }
 
     return (
         <TouchableOpacity onPress={() => navigation.push("Film", {filmData})} style={styles.filmContainer}>
@@ -153,3 +157,4 @@ const styles = StyleSheet.create({
 })
 
 export default MediumFilmsPreview;
+// TODO: Refactor

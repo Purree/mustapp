@@ -1,13 +1,25 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Button, Text } from "@ui-kitten/components";
+import { Button, Text, useTheme } from "@ui-kitten/components";
 import If from "../../If";
-import ReviewBottomSheet from "../../films/components/ReviewBottomSheet";
+import FilmsBottomSheet from "../../films/components/FilmsBottomSheet";
 import ButtonsModal from "../../films/components/ButtonsModal";
+import { Review } from "../../films/components/SheetComponents/Review";
 
-const WatchedButton = ( { type, setType, watched, setWatched, bottomSheetModalRef } ) => {
+const WatchedButton = ( {
+                            type,
+                            setType,
+                            watched,
+                            setWatched,
+                            bottomSheetModalRef,
+                            setBottomSheetContent,
+                            useInputState,
+                            DATA
+                        } ) => {
     const [modalVisible, setModalVisible] = useState( false );
     const [modalButtons, setModalButtons] = useState( [] )
+
+    const themeStyles = useTheme()
 
     const onWillWatch = () => {
         setWatched( 2 )
@@ -17,29 +29,29 @@ const WatchedButton = ( { type, setType, watched, setWatched, bottomSheetModalRe
         setModalButtons( [
             {
                 label: 'Переместить в Посмотрю',
-                onPress: ()=>{
-                    alert('На бэке')
-                    setModalVisible(false)
+                onPress: () => {
+                    alert( 'На бэке' )
+                    setModalVisible( false )
                     onWillWatch()
                 }
             },
             {
                 label: 'Удалить из Просмотрен',
-                onPress: ()=>{
-                    alert('На бэке')
-                    setModalVisible(false)
-                    setWatched(1)
+                onPress: () => {
+                    alert( 'На бэке' )
+                    setModalVisible( false )
+                    setWatched( 1 )
                 }
             },
             {
                 label: 'Редактировать отзыв',
-                onPress: ()=>{
-                    alert('На бэке')
-                    setModalVisible(false)
+                onPress: () => {
+                    alert( 'На бэке' )
+                    setModalVisible( false )
                     handlePresentModalPress()
                 }
             }
-            ] )
+        ] )
         setModalVisible( true )
     }
 
@@ -47,18 +59,18 @@ const WatchedButton = ( { type, setType, watched, setWatched, bottomSheetModalRe
         setModalButtons( [
             {
                 label: 'Переместить в Посмотрен',
-                onPress: ()=>{
-                    alert('На бэке')
-                    setModalVisible(false)
+                onPress: () => {
+                    alert( 'На бэке' )
+                    setModalVisible( false )
                     handlePresentModalPress()
                 }
             },
             {
                 label: 'Удалить из Посмотрю',
-                onPress: ()=>{
-                    alert('На бэке')
-                    setModalVisible(false)
-                    setWatched(1)
+                onPress: () => {
+                    alert( 'На бэке' )
+                    setModalVisible( false )
+                    setWatched( 1 )
                 }
             }
         ] )
@@ -66,7 +78,14 @@ const WatchedButton = ( { type, setType, watched, setWatched, bottomSheetModalRe
     }
 
     const handlePresentModalPress = useCallback( () => {
-        bottomSheetModalRef.current?.present();
+        setBottomSheetContent(<Review
+            filmInfo={{ photo: DATA.photoUrl, title: DATA.title, date: DATA.releaseDate }}
+            setWatched={setWatched}
+            themeStyles={themeStyles}
+            bottomSheetModalRef={bottomSheetModalRef}
+            useInputState={useInputState}/>)
+
+            bottomSheetModalRef.current?.present();
     }, [] );
 
     return (
@@ -117,3 +136,5 @@ const styles = StyleSheet.create( {
 } )
 
 export default WatchedButton;
+
+// TODO: REFACTOR!!!

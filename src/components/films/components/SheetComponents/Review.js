@@ -1,12 +1,8 @@
-import React, { useMemo, useState } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
-import { Button, Icon, Input, Layout, Text, useTheme } from '@ui-kitten/components';
-import {
-    BottomSheetModal,
-    BottomSheetModalProvider,
-    BottomSheetFlatList
-} from '@gorhom/bottom-sheet';
-import DividerWithMargin from "../../main/settings/components/DividerWithMargin";
+import { Image, StyleSheet, View } from "react-native";
+import { Button, Icon, Input, Text } from "@ui-kitten/components";
+import React, { useState } from "react";
+import DividerWithMargin from "../../../main/settings/components/DividerWithMargin";
+import { BottomSheetFlatList } from "@gorhom/bottom-sheet";
 
 const marks = [
     {
@@ -54,7 +50,7 @@ function Marks( { item, mark, setMark } ) {
     )
 }
 
-function Review( { filmInfo, themeStyles, useInputState, bottomSheetModalRef, setWatched } ) {
+export function Review( { filmInfo, themeStyles, useInputState, bottomSheetModalRef, setWatched } ) {
     const multilineInputState = useInputState();
     const [mark, setMark] = useState( 'x' )
 
@@ -65,10 +61,10 @@ function Review( { filmInfo, themeStyles, useInputState, bottomSheetModalRef, se
     const EmojiText = ( { mark } ) => {
         return <Text style={styles.smileEmoji}>{marks[ Math.abs( mark - 10 ) ].emoji}</Text>
     }
-    
+
     const onReviewSubmit = () => {
         alert( 'На бэке' );
-        setWatched(3)
+        setWatched( 3 )
         bottomSheetModalRef?.current.close()
     }
 
@@ -101,7 +97,8 @@ function Review( { filmInfo, themeStyles, useInputState, bottomSheetModalRef, se
                     keyExtractor={item => item.mark}
                     ListHeaderComponent={<Button appearance={!Number.isInteger( mark ) ? 'basic' : 'outline'}
                                                  status={!Number.isInteger( mark ) ? 'basic' : 'info'}
-                                                 style={styles.marksButton} onPress={() => setMark( 'x' )}>{'x'}</Button>}
+                                                 style={styles.marksButton}
+                                                 onPress={() => setMark( 'x' )}>{'x'}</Button>}
                     keyboardShouldPersistTaps={"always"}
                     showsHorizontalScrollIndicator={false}
                 />
@@ -113,44 +110,7 @@ function Review( { filmInfo, themeStyles, useInputState, bottomSheetModalRef, se
         </>);
 }
 
-
-const ReviewBottomSheet = ( { bottomSheetModalRef, filmInfo, setWatched } ) => {
-
-    const useInputState = ( initialValue = '' ) => {
-        const [value, setValue] = React.useState( initialValue );
-        return { value, onChangeText: setValue };
-    };
-
-    const themeStyles = useTheme()
-    const backgroundColor = themeStyles[ 'background-basic-color-2' ]
-
-    const snapPoints = useMemo( () => ['45%', '45%'], [] );
-    return (
-        <BottomSheetModalProvider>
-            <View>
-                <BottomSheetModal
-                    enablePanDownToClose={true}
-                    ref={bottomSheetModalRef}
-                    index={1}
-                    snapPoints={snapPoints}
-                    detached={true}
-                    backgroundStyle={{ backgroundColor: backgroundColor }}
-                    handleIndicatorStyle={{ backgroundColor: themeStyles[ 'background-alternative-color-2' ] }}
-                >
-                    <Layout style={[styles.contentContainer, { backgroundColor: backgroundColor }]}>
-                        <Review filmInfo={filmInfo} setWatched={setWatched} themeStyles={themeStyles} bottomSheetModalRef={bottomSheetModalRef}
-                                useInputState={useInputState}/>
-                    </Layout>
-                </BottomSheetModal>
-            </View>
-        </BottomSheetModalProvider>
-    );
-};
-
 const styles = StyleSheet.create( {
-    contentContainer: {
-        marginHorizontal: 15
-    },
     header: {
         flexDirection: 'row',
         marginTop: 10,
@@ -191,7 +151,3 @@ const styles = StyleSheet.create( {
         borderRadius: 50
     }
 } );
-
-export default ReviewBottomSheet;
-
-// TODO: Разбить это по компонентам

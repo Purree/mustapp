@@ -1,17 +1,23 @@
 import React from 'react';
 import { FlatList, View, StyleSheet, Pressable } from "react-native";
 import { Text } from "@ui-kitten/components";
+import Match from "../../../films/components/SheetComponents/Match";
 
-const DataBlock = ( { item } ) => {
-    return (
-        <Pressable onPress={item.onPress}>
-            <Text style={styles.userStatsCount}>{item.count}</Text>
-            <Text style={styles.userStatsLabel}>{item.title}</Text>
-        </Pressable>
-    )
-}
+const InformationBlock = ( { actions, setBottomSheetContent, bottomSheetModalRef } ) => {
+    const onMatch = (item) => {
+        setBottomSheetContent(<Match matchData={item.match} bottomSheetModalRef={bottomSheetModalRef}/>)
+        bottomSheetModalRef.current?.present()
+    }
 
-const InformationBlock = ( { actions } ) => {
+
+    const DataBlock = ( { item } ) => {
+        return (
+            <Pressable onPress={item.onPress || (item.isMatch ? ()=>onMatch(item) : ()=>{})}>
+                <Text style={styles.userStatsCount}>{item.count}</Text>
+                <Text style={styles.userStatsLabel}>{item.title}</Text>
+            </Pressable>
+        )
+    }
 
     const renderComponent = ( { item } ) => {
         return <DataBlock item={item}/>

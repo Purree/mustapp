@@ -66,4 +66,7 @@
 32. In sec/components/buttons/film/WatchedButton.js you can:
     - send requests to the server when cachedType or cachedWatched variables are change
     - add logic of modal buttons pressed
-33. In src/components/films/components/ReviewBottomSheet.js you can add movie scoring logic
+33. In src/components/films/components/SheetComponents/Review.js you can add movie scoring logic
+34. In src/components/films/FilmReviews.js you can add 
+    - logic of writing likes to the database
+    - load reviews from db

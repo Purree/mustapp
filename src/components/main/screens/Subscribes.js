@@ -80,7 +80,7 @@ const DATA = [
 ]
 
 const Subscribes = ( { route, navigation } ) => {
-    const { title, type } = route.params // type 1 - subscribers, type 2 - subscriptions, 3 - recommendations
+    const { title, type } = route.params // type 1 - subscribers, type 2 - subscriptions, 3 - recommendations, 4 - watched
 
     const SearchIcon = ( props ) => (
         <Icon {...props} name='search-outline'/>

@@ -9,7 +9,8 @@ import MediumFilmsPreview from "./components/MediumFilmsPreview";
 import Ratings from "./components/Ratings";
 import Genres from "./components/Genres";
 import WatchedButton from "../buttons/film/WatchedButton";
-import ReviewBottomSheet from "./components/ReviewBottomSheet";
+import FilmsBottomSheet from "./components/FilmsBottomSheet";
+import { Review } from "./components/SheetComponents/Review";
 
 const Film = ( { navigation, route } ) => {
     LogBox.ignoreLogs( [
@@ -19,11 +20,17 @@ const Film = ( { navigation, route } ) => {
     const themeStyles = useTheme()
 
     const bottomSheetModalRef = useRef( null );
+    const [bottomSheetContent, setBottomSheetContent] = useState( <></> )
 
     const DATA = route.params.filmData
 
     const type = DATA.type
     const [cachedWatched, setCachedWatched] = useState( DATA.watched )
+
+    const useInputState = ( initialValue = '' ) => {
+        const [value, setValue] = React.useState( initialValue );
+        return { value, onChangeText: setValue };
+    };
 
     return (
         <>
@@ -36,11 +43,13 @@ const Film = ( { navigation, route } ) => {
                 </View>
                 <Text style={styles.filmTitle}>{DATA.title}</Text>
                 <Text style={[styles.filmText, { color: themeStyles[ 'text-hint-color' ] }]}>{DATA.releaseDate}</Text>
-                <WatchedButton type={type} watched={cachedWatched}
+                <WatchedButton setBottomSheetContent={setBottomSheetContent}
+                               type={type} watched={cachedWatched} useInputState={useInputState} DATA={DATA}
                                setWatched={setCachedWatched} bottomSheetModalRef={bottomSheetModalRef}/>
 
                 <View style={styles.informationBlock}>
-                    <InformationBlock actions={DATA.statistics}/>
+                    <InformationBlock actions={DATA.statistics} setBottomSheetContent={setBottomSheetContent}
+                                      bottomSheetModalRef={bottomSheetModalRef}/>
                 </View>
                 <DividerWithMargin/>
 
@@ -60,9 +69,8 @@ const Film = ( { navigation, route } ) => {
 
                 <MediumFilmsPreview title='Похожие фильмы' navigation={navigation}/>
             </ScrollView>
-            <ReviewBottomSheet bottomSheetModalRef={bottomSheetModalRef}
-                               filmInfo={{ photo: DATA.photoUrl, title: DATA.title, date: DATA.releaseDate }}
-                               setWatched={setCachedWatched}/>
+            <FilmsBottomSheet bottomSheetModalRef={bottomSheetModalRef}
+                              bottomComponent={bottomSheetContent}/>
         </>
     );
 }
@@ -107,3 +115,4 @@ const styles = StyleSheet.create( {
 } )
 
 export default Film;
+// TODO: Refactor

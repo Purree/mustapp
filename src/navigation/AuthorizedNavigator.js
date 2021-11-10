@@ -10,6 +10,7 @@ import {LoginWithNumberScreen} from "../components/login/LoginWithNumber";
 import ConfirmNumber from "../components/login/ConfirmNumber";
 import Notifications from "../components/main/settings/components/Notifications";
 import Film from "../components/films/Film";
+import FilmReviews from "../components/films/FilmReviews";
 
 const {Navigator, Screen} = createStackNavigator();
 
@@ -37,6 +38,7 @@ export const AuthorizedNavigator = () => {
             <Screen name='NumberConfirmation' component={ConfirmNumber}/>
             <Screen name='Notifications' component={Notifications}/>
             <Screen name='Film' component={Film} />
+            <Screen name='FilmReviews' component={FilmReviews} />
         </Navigator>
     </NavigationContainer>
 )};
