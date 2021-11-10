@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { View, ScrollView, Image, StyleSheet, LogBox } from 'react-native';
-import { Text, useTheme, Button } from "@ui-kitten/components";
+import { Text, useTheme } from "@ui-kitten/components";
 import Header from "../Header";
 import InformationBlock from "../main/profile/components/InformationBlock";
 import DividerWithMargin from "../main/settings/components/DividerWithMargin";

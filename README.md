@@ -63,6 +63,7 @@
 30. In sec/components/main/notification/screens/[Actions/Friends].js you can add loading notifications from db
 31. In sec/components/main/notification/screens/Friends.js you must make the facebook and close recommendations buttons
     work
-32. In sec/components/buttons/film/WatchedButton.js you can send requests to the server when cachedType or cachedWatched
-    variables are change
+32. In sec/components/buttons/film/WatchedButton.js you can:
+    - send requests to the server when cachedType or cachedWatched variables are change
+    - add logic of modal buttons pressed
 33. In src/components/films/components/ReviewBottomSheet.js you can add movie scoring logic
