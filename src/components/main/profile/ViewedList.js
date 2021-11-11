@@ -31,7 +31,7 @@ const FilmsContainer = ( { item } ) => {
 }
 
 
-const ViewedList = ( { films } ) => (
+const ViewedList = ( { films, header } ) => (
     <FlatList
         numColumns={2}
         columnWrapperStyle={styles.container}
@@ -39,6 +39,7 @@ const ViewedList = ( { films } ) => (
         renderItem={FilmsContainer}
         keyExtractor={item => item.id}
         ListEmptyComponent={<EmptyList/>}
+        ListHeaderComponent={header}
     />
 )
 

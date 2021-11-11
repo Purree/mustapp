@@ -71,3 +71,4 @@
     - logic of writing likes to the database
     - load reviews from db
 35. In src/components/films/FriendsReviews.js you can add comment send logic.
+36. In src/components/films/FilmsBlock.js you can add loading films from db
