@@ -3,9 +3,10 @@ import { FlatList, View, StyleSheet } from 'react-native';
 import { Avatar, Icon, Text, useTheme } from "@ui-kitten/components";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const Rating = ( { item, navigation, themeStyles } ) => {
+const Rating = ( { item, navigation, themeStyles, filmData } ) => {
     return (
-        <TouchableOpacity containerStyle={styles.container} onPress={() => alert( 'Потом' )}>
+        <TouchableOpacity containerStyle={styles.container}
+                          onPress={() => navigation.navigate( 'FriendsReviews', { review: item, filmData } )}>
             <Avatar size='large' source={{ uri: item.userAvatar }}/>
             <View style={styles.markContainer}>
                 <View style={[styles.mark, { backgroundColor: themeStyles[ 'background-basic-color-2' ] }]}>
@@ -17,17 +18,17 @@ const Rating = ( { item, navigation, themeStyles } ) => {
     )
 }
 
-const Ratings = ( { ratings, navigation } ) => {
+const Ratings = ( { ratings, filmData, navigation } ) => {
     const themeStyles = useTheme()
 
     const renderComponent = ( { item } ) => {
-        return <Rating item={item} navigation={navigation} themeStyles={themeStyles}/>
+        return <Rating item={item} filmData={filmData} navigation={navigation} themeStyles={themeStyles}/>
     }
 
     return (
         <FlatList
             horizontal={true}
-            contentContainerStyle={{marginBottom: 10}}
+            contentContainerStyle={{ marginBottom: 10 }}
             keyboardShouldPersistTaps={"always"}
             showsHorizontalScrollIndicator={false}
             data={ratings}

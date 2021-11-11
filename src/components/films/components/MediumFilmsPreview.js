@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, FlatList, Image, StyleSheet} from 'react-native';
-import {Icon, Text, useTheme} from "@ui-kitten/components";
-import {TouchableOpacity} from "react-native-gesture-handler";
+import { View, FlatList, Image, StyleSheet } from 'react-native';
+import { Icon, Text, useTheme } from "@ui-kitten/components";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import FilmStatus from "./FilmStatus";
 
 const DATA = [
@@ -33,7 +33,7 @@ const DATA = [
 ];
 
 
-const FilmContainer = (item, themeStyles, navigation) => {
+const FilmContainer = ( item, themeStyles, navigation ) => {
     item = item.item
 
     const filmData = {
@@ -56,17 +56,17 @@ const FilmContainer = (item, themeStyles, navigation) => {
             {
                 count: 3,
                 title: 'Посмотрят',
-                onPress: () => navigation.navigate('Subscribes', {title: 'Посмотрят', type: 4})
+                onPress: () => navigation.navigate( 'Subscribes', { title: 'Посмотрят', type: 4 } )
             },
             {
                 count: 12,
                 title: 'Посмотрели',
-                onPress: () => navigation.navigate('FilmReviews', {title: 'Посмотрели'})
+                onPress: () => navigation.navigate( 'FilmReviews', { title: 'Посмотрели' } )
             },
             {
                 count: 0,
                 title: 'Отзывы',
-                onPress: () => navigation.navigate('FilmReviews', {title: 'Отзывы'})
+                onPress: () => navigation.navigate( 'FilmReviews', { title: 'Отзывы' } )
             },
         ],
         genres: [
@@ -99,11 +99,49 @@ const FilmContainer = (item, themeStyles, navigation) => {
             {
                 userId: 1,
                 userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png',
-                userMark: 7
+                userMark: 7,
+                name: 'Фиколай Нлитов',
+                date: '25 декабря, 2020',
+                comment: 'Классный фильм, всё понравилось, ставлю 1 звезду',
+                likes: 0,
+                comments: [
+                    {
+                        userId: 1,
+                        userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/230px-Vladimir_Lenin.jpg',
+                        filmMark: 7,
+                        comments: [
+                            {
+                                commentId: 1,
+                                text: 'texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext'
+                            },
+                            {
+                                commentId: 2,
+                                text: 'texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext'
+                            },
+                            {
+                                commentId: 3,
+                                text: 'texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext'
+                            },
+                        ]
+                    },
+                    {
+                        userId: 1,
+                        userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/230px-Vladimir_Lenin.jpg',
+                        comments: [
+                            {
+                                commentId: 1,
+                                text: 'Текст 123 ☺'
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 userId: 2,
+                date: '25 декабря, 2020',
+                name: 'Тест',
                 userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Photos_icon_%282020%29.svg/1200px-Google_Photos_icon_%282020%29.svg.png',
+                likes: 0,
                 userMark: 10
             }
         ],
@@ -112,26 +150,26 @@ const FilmContainer = (item, themeStyles, navigation) => {
     }
 
     return (
-        <TouchableOpacity onPress={() => navigation.push("Film", {filmData})} style={styles.filmContainer}>
-            <Image style={styles.filmImage} source={{uri: item.filmPhoto}}/>
-            <FilmStatus item={item} />
+        <TouchableOpacity onPress={() => navigation.push( "Film", { filmData } )} style={styles.filmContainer}>
+            <Image style={styles.filmImage} source={{ uri: item.filmPhoto }}/>
+            <FilmStatus item={item}/>
         </TouchableOpacity>
     )
 }
 
-const MediumFilmsPreview = ({title, navigation}) => {
+const MediumFilmsPreview = ( { title, navigation } ) => {
     const themeStyles = useTheme()
 
     title = title ?? ''
 
     return (
         <View>
-            <Text style={[styles.blockTitle, title ? {marginBottom: 10, marginTop: 15} : {}]}>{title}</Text>
+            <Text style={[styles.blockTitle, title ? { marginBottom: 10, marginTop: 15 } : {}]}>{title}</Text>
             <FlatList
                 horizontal={true}
                 data={DATA}
                 showsHorizontalScrollIndicator={false}
-                renderItem={(item) => FilmContainer(item, themeStyles, navigation)}
+                renderItem={( item ) => FilmContainer( item, themeStyles, navigation )}
                 keyExtractor={item => item.id}
                 ListEmptyComponent={<Text>Пока тут пусто</Text>}
             />
@@ -139,7 +177,7 @@ const MediumFilmsPreview = ({title, navigation}) => {
     );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
     filmContainer: {
         height: 175,
         width: 100,
@@ -154,7 +192,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 18
     }
-})
+} )
 
 export default MediumFilmsPreview;
 // TODO: Refactor

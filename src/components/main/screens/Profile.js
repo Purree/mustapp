@@ -8,7 +8,7 @@ import InformationBlock from "../profile/components/InformationBlock";
 
 export const Profile = ( { navigation, route } ) => {
     const themeStyles = useTheme();
-    const type = route?.params?.type ?? 1; // 1 - current user, 2 - other user
+    const type = route?.params?.type ?? 1; // 1 - current user, 2 - another user
     const userId = route?.params?.userId ?? 0;
 
     const user = {

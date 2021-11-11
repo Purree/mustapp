@@ -11,6 +11,8 @@ import ConfirmNumber from "../components/login/ConfirmNumber";
 import Notifications from "../components/main/settings/components/Notifications";
 import Film from "../components/films/Film";
 import FilmReviews from "../components/films/FilmReviews";
+import FriendsReviews from "../components/films/FriendsReviews";
+import FilmsBlock from "../components/films/FilmsBlock";
 
 const {Navigator, Screen} = createStackNavigator();
 
@@ -39,6 +41,8 @@ export const AuthorizedNavigator = () => {
             <Screen name='Notifications' component={Notifications}/>
             <Screen name='Film' component={Film} />
             <Screen name='FilmReviews' component={FilmReviews} />
+            <Screen name='FriendsReviews' component={FriendsReviews} />
+            <Screen name='FilmsBlock' component={FilmsBlock} />
         </Navigator>
     </NavigationContainer>
 )};

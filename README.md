@@ -70,3 +70,4 @@
 34. In src/components/films/FilmReviews.js you can add 
     - logic of writing likes to the database
     - load reviews from db
+35. In src/components/films/FriendsReviews.js you can add comment send logic.

@@ -6,7 +6,9 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Genre = ( { item, navigation, themeStyles } ) => {
     return (
-        <TouchableOpacity onPress={()=>{alert('Потом')}} style={[styles.genreBlock, { backgroundColor: themeStyles[ 'background-basic-color-2' ] }]}>
+        <TouchableOpacity onPress={() => {
+            navigation.navigate( 'FilmsBlock', { emoji: item.icon, title: item.genre } )
+        }} style={[styles.genreBlock, { backgroundColor: themeStyles[ 'background-basic-color-2' ] }]}>
             <Text>{item.icon}{item.genre}</Text>
         </TouchableOpacity>
     )

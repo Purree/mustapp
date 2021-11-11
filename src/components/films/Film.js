@@ -53,7 +53,8 @@ const Film = ( { navigation, route } ) => {
                 </View>
                 <DividerWithMargin/>
 
-                <Ratings navigation={navigation} ratings={DATA.friendsRatings}/>
+                <Ratings navigation={navigation} ratings={DATA.friendsRatings}
+                         filmData={{ title: DATA.title, photoUrl: DATA.photoUrl, date: DATA.releaseDate }}/>
 
                 <View>
                     <Text style={styles.descriptionHeader}>Описание</Text>
