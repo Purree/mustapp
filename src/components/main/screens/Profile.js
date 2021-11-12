@@ -1,10 +1,11 @@
 import React from 'react';
 import { Pressable, SafeAreaView, StyleSheet, View } from 'react-native';
-import { Divider, Layout, useTheme, Avatar, Text } from '@ui-kitten/components';
+import { Divider, Layout, useTheme, Avatar, Text, Button } from '@ui-kitten/components';
 import { Header } from "../profile/Header";
 import defaultAvatar from '../../../pictures/users/avatars/unknownUser.png'
 import { ProfileTabBar } from "../profile/ProfileTabBar";
 import InformationBlock from "../profile/components/InformationBlock";
+import If from "../../If";
 
 export const Profile = ( { navigation, route } ) => {
     const themeStyles = useTheme();
@@ -40,10 +41,18 @@ export const Profile = ( { navigation, route } ) => {
         },
     ]
 
+    const addToFriends = () => {
+        alert('На бэке')
+    }
+
+
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <Header type={type} navigation={navigation}/>
             <Layout style={styles.container}>
+                <If condition={type === 2}>
+                    <Button onPress={addToFriends} style={{ marginVertical: 10 }}>Добавить в друзья</Button>
+                </If>
                 <View style={{ flex: 1, justifyContent: 'space-between' }}>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
                         <Text style={{
