@@ -44,7 +44,7 @@ const FriendsReviews = ( { navigation, route } ) => {
                         {item.filmMark ? 'Оценил этот фильма на ' + item.filmMark : 'Не оценивал этот фильм'}
                     </Text>
                     {item.comments.map( ( item, index ) => {
-                        return <Comment key={index} item={item} themeStyles={themeStyles}/>
+                        return <View key={index}><Comment item={item} themeStyles={themeStyles}/></View>
                     } )}
                 </View>
             </View>
@@ -80,7 +80,7 @@ const FriendsReviews = ( { navigation, route } ) => {
                     style={{ marginBottom: 50 }}
                     data={review.review.comments}
                     renderItem={renderComments}
-                    keyExtractor={item => item.commentId}
+                    keyExtractor={item => item.userId}
                 />
                 <View style={styles.commentInput}>
                     <Input value={commentText}

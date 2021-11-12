@@ -21,6 +21,7 @@ const Film = ( { navigation, route } ) => {
     const bottomSheetModalRef = useRef( null );
     const [bottomSheetContent, setBottomSheetContent] = useState( <></> )
 
+
     const DATA = route.params.filmData
 
     const type = DATA.type
@@ -33,7 +34,7 @@ const Film = ( { navigation, route } ) => {
 
     return (
         <>
-            <Header navigation={navigation} title={DATA.title}/>
+            <Header navigation={navigation} title={DATA.title ?? 'Неизвестно'}/>
             <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
                 <View style={styles.imageBlock}>
                     <View style={styles.filmImageContainer}>

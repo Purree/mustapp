@@ -23,7 +23,7 @@ const FilmCollection = ( { navigation, route } ) => {
             <Header navigation={navigation} title={params.collectionTitle}/>
             <Divider/>
             <View style={MainStyles().container}>
-                <ViewedList header={
+                <ViewedList navigation={navigation} header={
                     <>
                         <View style={styles.collectionHeader}>
                             <Text style={styles.collectionEmoji}>{params.collectionEmoji}</Text>

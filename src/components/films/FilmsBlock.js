@@ -23,7 +23,7 @@ const FilmsBlock = ( { navigation, route } ) => {
         <>
             <Header title={params.title} navigation={navigation}/>
             <View style={MainStyles().container}>
-                <ViewedList films={films} header={
+                <ViewedList navigation={navigation} films={films} header={
                     <Text style={styles.emoji}>{params.emoji}</Text>
                 }/>
             </View>

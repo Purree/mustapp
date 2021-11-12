@@ -166,7 +166,7 @@ const FilmContainer = ( item, themeStyles, navigation ) => {
                         ]
                     },
                     {
-                        userId: 1,
+                        userId: 2,
                         userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/230px-Vladimir_Lenin.jpg',
                         comments: [
                             {

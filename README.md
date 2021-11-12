@@ -74,4 +74,6 @@
 36. In src/components/films/FilmsBlock.js you can add loading films from db
 37. In src/components/films/FilmCrew.js you can add logic of person follow 
 38. In src/components/buttons/film/CollectionLikeButton.js you can add collection likes logic
-38. In src/components/films/FilmCollection.js you can add press on "add" button logic 
+39. In src/components/films/FilmCollection.js you can add press on "add" button logic 
+
+**P.S. In most places where there is interaction with the backend I left "alert" or "console.log", you can search by them**

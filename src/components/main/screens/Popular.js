@@ -14,7 +14,7 @@ export const Popular = ({navigation}) => {
             <Divider/>
             <View style={styles.container}>
                 <ScrollView>
-                    <LargeFilmsPreview title='Популярно сейчас'/>
+                    <LargeFilmsPreview navigation={navigation} title='Популярно сейчас'/>
                     {/*Here must be Video block, but if you want to watch youtube videos you need to get apiKeyУ м
                     so apiKey can get only by certificated apps*/}
                     <MediumFilmsPreview title='Доступен стриминг' navigation={navigation}/>

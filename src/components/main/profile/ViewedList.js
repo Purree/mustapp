@@ -6,7 +6,8 @@ import config from '../../../../config.json'
 import If from "../../If";
 import FilmStatus from "../../films/components/FilmStatus";
 
-export const FilmsContainer = ( { item } ) => {
+export const FilmsContainer = ( { item, navigation } ) => {
+    item = item.item
     const filmMark = item?.filmMark
 
     const validateLink = ( link ) => {
@@ -14,7 +15,7 @@ export const FilmsContainer = ( { item } ) => {
     }
 
     return (
-        <Pressable onPress={()=>{alert('Потом')}} style={styles.block}>
+        <Pressable onPress={()=>{navigation.navigate('Film', { filmData: item })}} style={styles.block}>
             <If condition={filmMark}>
                 <View style={styles.mark}>
                     <FilmStatus item={{ ...item, filmStatus: 3 }} />
@@ -31,12 +32,12 @@ export const FilmsContainer = ( { item } ) => {
 }
 
 
-const ViewedList = ( { films, header, empty } ) => (
+const ViewedList = ( { films, header, empty, navigation } ) => (
     <FlatList
         numColumns={2}
         columnWrapperStyle={styles.container}
         data={films}
-        renderItem={FilmsContainer}
+        renderItem={(item) => <FilmsContainer item={item} navigation={navigation} />}
         keyExtractor={item => item.id}
         ListEmptyComponent={empty ?? <EmptyList/>}
         ListHeaderComponent={header}
