@@ -56,7 +56,7 @@ const SubscribedUser = ( { item, navigation } ) => {
                     height: 22,
                     backgroundColor: styleTheme[ 'text-basic-color' ],
                     borderRadius: 10
-                }} name={item.isSubscribed ? 'checkmark-circle-2-outline': 'plus-circle-outline'}/>
+                }} name={item.isSubscribed ? 'checkmark-circle-2-outline' : 'plus-circle-outline'}/>
             </TouchableOpacity>
 
             <UnsubscribeModal visible={visible} setVisible={setVisible} id={item.id} isSubscribed={item.isSubscribed}/>
@@ -80,7 +80,8 @@ const DATA = [
 ]
 
 const Subscribes = ( { route, navigation } ) => {
-    const { title, type } = route.params // type 1 - subscribers, type 2 - subscriptions, 3 - recommendations, 4 - watched
+    const { title, type } = route.params // type 1 - subscribers, type 2 - subscriptions, 3 - recommendations,
+    // 4 - watched, 5 - person(actor) fans
 
     const SearchIcon = ( props ) => (
         <Icon {...props} name='search-outline'/>

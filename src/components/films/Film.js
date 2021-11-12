@@ -10,7 +10,6 @@ import Ratings from "./components/Ratings";
 import Genres from "./components/Genres";
 import WatchedButton from "../buttons/film/WatchedButton";
 import FilmsBottomSheet from "./components/FilmsBottomSheet";
-import { Review } from "./components/SheetComponents/Review";
 
 const Film = ( { navigation, route } ) => {
     LogBox.ignoreLogs( [
@@ -66,7 +65,7 @@ const Film = ( { navigation, route } ) => {
 
                 <Genres navigation={navigation} genres={DATA.genres} style={styles.descriptionHeader}/>
 
-                <Persons title='Актёры и съёмочная группа' style={styles.descriptionHeader} peoples={DATA.filmCrew}/>
+                <Persons navigation={navigation} title='Актёры и съёмочная группа' style={styles.descriptionHeader} peoples={DATA.filmCrew}/>
 
                 <MediumFilmsPreview title='Похожие фильмы' navigation={navigation}/>
             </ScrollView>

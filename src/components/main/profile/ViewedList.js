@@ -6,7 +6,7 @@ import config from '../../../../config.json'
 import If from "../../If";
 import FilmStatus from "../../films/components/FilmStatus";
 
-const FilmsContainer = ( { item } ) => {
+export const FilmsContainer = ( { item } ) => {
     const filmMark = item?.filmMark
 
     const validateLink = ( link ) => {

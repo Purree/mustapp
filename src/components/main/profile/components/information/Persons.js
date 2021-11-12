@@ -2,8 +2,8 @@ import React from 'react';
 import { FlatList, ScrollView, TouchableOpacity, View } from 'react-native';
 import { Avatar, Text, useTheme } from '@ui-kitten/components'
 
-const PersonBlock = ( { item, themeStyles } ) => (
-    <TouchableOpacity style={styles().personBlock} onPress={() => alert( 'Потом' )}>
+const PersonBlock = ( { item, themeStyles, navigation } ) => (
+    <TouchableOpacity style={styles().personBlock} onPress={() => navigation.navigate('FilmCrew', {item})}>
         <Avatar size='giant'
                 source={{ uri: item.photoUrl }}/>
         <Text>{item.name}</Text>
@@ -11,12 +11,12 @@ const PersonBlock = ( { item, themeStyles } ) => (
     </TouchableOpacity>
 )
 
-const Persons = ( { peoples, title, style } ) => {
+const Persons = ( { peoples, title, style, navigation } ) => {
     title = title ?? ''
     const themeStyles = useTheme();
 
     const renderComponent = ( { item } ) => {
-        return <PersonBlock item={item} themeStyles={themeStyles}/>
+        return <PersonBlock navigation={navigation} item={item} themeStyles={themeStyles}/>
     }
 
     return <View style={styles().container}>
