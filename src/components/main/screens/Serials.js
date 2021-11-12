@@ -15,7 +15,7 @@ const Serials = ({navigation}) => {
             <View style={styles.container}>
                 <ScrollView>
                     <MediumFilmsPreview navigation={navigation} title='Сериалы'/>
-                    <Collections />
+                    <Collections navigation={navigation}/>
                 </ScrollView>
             </View>
         </Layout>

@@ -20,7 +20,7 @@ export const Popular = ({navigation}) => {
                     <MediumFilmsPreview title='Доступен стриминг' navigation={navigation}/>
                     <MediumFilmsPreview title='Сейчас в кинотеатрах' navigation={navigation}/>
                     <MediumFilmsPreview title='Скоро в кинотеатрах' navigation={navigation}/>
-                    <Collections />
+                    <Collections navigation={navigation}/>
                 </ScrollView>
             </View>
         </Layout>

@@ -14,8 +14,8 @@ import { FilmsContainer } from "../main/profile/ViewedList";
 export const FilmCrew = ( { navigation, route } ) => {
     const params = route.params.item
     const themeStyles = useTheme()
-    const [cachedFans, setCachedFans] = useState( params.fans )
-    const [isFollow, setIsFollow] = useState( params.isFollow )
+    const [cachedFans, setCachedFans] = useState( params.fans ?? 0 )
+    const [isFollow, setIsFollow] = useState( params.isFollow ?? false )
 
     const addPersonToFavourite = () => {
         setCachedFans( isFollow ? cachedFans - 1 : cachedFans + 1 )
@@ -45,24 +45,30 @@ export const FilmCrew = ( { navigation, route } ) => {
                     <View style={[MainStyles().container, { justifyContent: 'flex-end' }]}>
                         <Text style={styles.personName}>{params.name}</Text>
                         <View style={styles.statsContainer}>
-                            <View style={styles.statsBlock}>
-                                <Text style={styles.stats}>{params.viewed} из {params.total}</Text>
-                                <Text style={[styles.statsDescription, { color: themeStyles[ 'text-hint-color' ] }]}>
-                                    Просмотрен
-                                </Text>
-                            </View>
-                            <View style={styles.statsBlock}>
-                                <Text style={styles.stats}>{params.fans}</Text>
-                                <Text style={[styles.statsDescription, { color: themeStyles[ 'text-hint-color' ] }]}>
-                                    Фанаты в приложении
-                                </Text>
-                            </View>
-                            <View style={styles.statsBlock}>
-                                <Text style={styles.stats}>{params.rating}</Text>
-                                <Text style={[styles.statsDescription, { color: themeStyles[ 'text-hint-color' ] }]}>
-                                    Средний рейтинг
-                                </Text>
-                            </View>
+                            <If condition={params.viewed && params.total}>
+                                <View style={styles.statsBlock}>
+                                    <Text style={styles.stats}>{params.viewed} из {params.total}</Text>
+                                    <Text style={[styles.statsDescription, { color: themeStyles[ 'text-hint-color' ] }]}>
+                                        Просмотрен
+                                    </Text>
+                                </View>
+                            </If>
+                            <If condition={params.fans}>
+                                <View style={styles.statsBlock}>
+                                    <Text style={styles.stats}>{params.fans}</Text>
+                                    <Text style={[styles.statsDescription, { color: themeStyles[ 'text-hint-color' ] }]}>
+                                        Фанаты в приложении
+                                    </Text>
+                                </View>
+                            </If>
+                            <If condition={params.rating}>
+                                <View style={styles.statsBlock}>
+                                    <Text style={styles.stats}>{params.rating}</Text>
+                                    <Text style={[styles.statsDescription, { color: themeStyles[ 'text-hint-color' ] }]}>
+                                        Средний рейтинг
+                                    </Text>
+                                </View>
+                            </If>
                         </View>
                     </View>
                 </ImageBackground>
@@ -102,13 +108,15 @@ export const FilmCrew = ( { navigation, route } ) => {
                             </ButtonGroup>
                             <DividerWithMargin/>
                             <If condition={params.director}>
-                                <Text style={[styles.personFilmsProfession, { color: themeStyles[ 'text-hint-color' ] }]}>
+                                <Text
+                                    style={[styles.personFilmsProfession, { color: themeStyles[ 'text-hint-color' ] }]}>
                                     Режисёр
                                 </Text>
                                 <View style={styles.filmsContainer}>
-                                    {params.director.map( ( item ) => {
-                                        return <FilmsContainer key={item.id} item={item}/>
-                                    } )}
+                                    {params.director ? params.director.map( ( item ) => {
+                                            return <FilmsContainer key={item.id} item={item}/>
+                                        } )
+                                        : <></>}
                                 </View>
                             </If>
                             <If condition={params.actor}>
@@ -117,9 +125,10 @@ export const FilmCrew = ( { navigation, route } ) => {
                                     Актёр
                                 </Text>
                                 <View style={styles.filmsContainer}>
-                                    {params.actor.map( ( item ) => {
-                                        return <FilmsContainer key={item.id} item={item}/>
-                                    } )}
+                                    {params.actor ? params.actor.map( ( item ) => {
+                                            return <FilmsContainer key={item.id} item={item}/>
+                                        } )
+                                        : <></>}
                                 </View>
                             </If>
                         </View>

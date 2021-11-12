@@ -65,8 +65,8 @@ const Information = ( { navigation } ) => {
         <Layout style={{ flex: 1 }}>
             <ScrollView>
                 <StatisticBlocks statistics={stats} navigation={navigation}/>
-                <Persons peoples={peoples} title='Любимые актёры'/>
-                <Persons peoples={peoples} title='Любимые режисёры'/>
+                <Persons navigation={navigation} peoples={peoples} title='Любимые актёры'/>
+                <Persons navigation={navigation} peoples={peoples} title='Любимые режисёры'/>
                 <GraphStatistics/>
             </ScrollView>
         </Layout>

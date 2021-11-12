@@ -14,6 +14,7 @@ import FilmReviews from "../components/films/FilmReviews";
 import FriendsReviews from "../components/films/FriendsReviews";
 import FilmsBlock from "../components/films/FilmsBlock";
 import { FilmCrew } from "../components/films/FilmCrew";
+import FilmCollection from "../components/films/FilmCollection";
 
 const {Navigator, Screen} = createStackNavigator();
 
@@ -45,6 +46,7 @@ export const AuthorizedNavigator = () => {
             <Screen name='FriendsReviews' component={FriendsReviews} />
             <Screen name='FilmsBlock' component={FilmsBlock} />
             <Screen name='FilmCrew' component={FilmCrew} />
+            <Screen name='FilmCollection' component={FilmCollection} />
         </Navigator>
     </NavigationContainer>
 )};

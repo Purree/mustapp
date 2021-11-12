@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout} from "@ui-kitten/components";
-import { FlatList, Image, StyleSheet, View } from 'react-native';
+import { FlatList, Image, Pressable, StyleSheet, View } from 'react-native';
 import EmptyList from "./EmptyList";
 import config from '../../../../config.json'
 import If from "../../If";
@@ -14,7 +14,7 @@ export const FilmsContainer = ( { item } ) => {
     }
 
     return (
-        <Layout style={styles.block}>
+        <Pressable onPress={()=>{alert('Потом')}} style={styles.block}>
             <If condition={filmMark}>
                 <View style={styles.mark}>
                     <FilmStatus item={{ ...item, filmStatus: 3 }} />
@@ -26,19 +26,19 @@ export const FilmsContainer = ( { item } ) => {
                     uri: validateLink( item?.photoUrl )
                 }}
             />
-        </Layout>
+        </Pressable>
     )
 }
 
 
-const ViewedList = ( { films, header } ) => (
+const ViewedList = ( { films, header, empty } ) => (
     <FlatList
         numColumns={2}
         columnWrapperStyle={styles.container}
         data={films}
         renderItem={FilmsContainer}
         keyExtractor={item => item.id}
-        ListEmptyComponent={<EmptyList/>}
+        ListEmptyComponent={empty ?? <EmptyList/>}
         ListHeaderComponent={header}
     />
 )

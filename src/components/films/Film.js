@@ -65,7 +65,8 @@ const Film = ( { navigation, route } ) => {
 
                 <Genres navigation={navigation} genres={DATA.genres} style={styles.descriptionHeader}/>
 
-                <Persons navigation={navigation} title='Актёры и съёмочная группа' style={styles.descriptionHeader} peoples={DATA.filmCrew}/>
+                <Persons navigation={navigation} title='Актёры и съёмочная группа' style={styles.descriptionHeader}
+                         peoples={DATA.filmCrew}/>
 
                 <MediumFilmsPreview title='Похожие фильмы' navigation={navigation}/>
             </ScrollView>

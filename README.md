@@ -73,3 +73,5 @@
 35. In src/components/films/FriendsReviews.js you can add comment send logic.
 36. In src/components/films/FilmsBlock.js you can add loading films from db
 37. In src/components/films/FilmCrew.js you can add logic of person follow 
+38. In src/components/buttons/film/CollectionLikeButton.js you can add collection likes logic
+38. In src/components/films/FilmCollection.js you can add press on "add" button logic 
